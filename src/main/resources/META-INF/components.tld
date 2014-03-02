@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+	version="2.1">
+	<description>Straightforward and elegant tag library for building Java web applications.</description>
+	<display-name>Interface Component Tag Library</display-name>
+	<tlib-version>1.0</tlib-version>
+	<short-name>comp</short-name>
+	<uri>http://swiftelan.com/components</uri>
+
+	<tag>
+		<description>Build an HTML table with a row for each item in a collection.</description>
+		<name>table</name>
+		<tag-class>com.swiftelan.tag.table.TableTag</tag-class>
+		<body-content>scriptless</body-content>
+
+		<attribute>
+			<description>Space separated list of classes for the table.</description>
+			<name>class</name>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+
+		<attribute>
+			<description>The objects that will be iterated over to build the table. A row is generated for each element in the collection.</description>
+			<name>items</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.util.Collection</type>
+		</attribute>
+
+		<attribute>
+			<description>Name of the variable with the current item in page scope.</description>
+			<name>var</name>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+
+		<attribute>
+			<description>Name of the variable with the loop status in page scope.</description>
+			<name>varStatus</name>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+	</tag>
+
+	<tag>
+		<description>Column in a table.</description>
+		<name>column</name>
+		<tag-class>com.swiftelan.tag.table.ColumnTag</tag-class>
+		<body-content>scriptless</body-content>
+
+		<attribute>
+			<description>Space separated list of classes for the table. The class is applied to the th and td elements for the column.</description>
+			<name>class</name>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+
+		<attribute>
+			<description>Text heading for the column.</description>
+			<name>header</name>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+	</tag>
+</taglib>
