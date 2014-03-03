@@ -7,6 +7,9 @@
 	<artifactId>component-tag-library</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<name>Component Tag Library</name>
+	<url>https://github.com/swiftelan/tag-library</url>
+	<description>Simple and elegant JSP tag library for Java web development</description>
+	<inceptionYear>2014</inceptionYear>
 
 	<scm>
 		<connection>scm:git:https://github.com/swiftelan/tag-library</connection>
@@ -147,5 +150,4 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-
 </project>
