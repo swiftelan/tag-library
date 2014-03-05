@@ -21,6 +21,17 @@
 		<system>GitHub</system>
 		<url>https://github.com/swiftelan/tag-library/issues</url>
 	</issueManagement>
+	
+	<developers>
+		<developer>
+			<name>Aaron Johnson</name>
+			<timezone>-6</timezone>
+			<url>http://swiftelan.com</url>
+			<roles>
+				<role>developer</role>
+			</roles>
+		</developer>
+	</developers>
 
 	<dependencies>
 		<dependency>
