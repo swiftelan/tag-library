@@ -64,4 +64,11 @@
 			<type>java.lang.String</type>
 		</attribute>
 	</tag>
+	
+	<tag>
+		<description>Define a column header that has a complex body.</description>
+		<name>columnHeader</name>
+		<tag-class>com.swiftelan.tag.table.ColumnHeaderTag</tag-class>
+		<body-content>scriptless</body-content>
+	</tag>
 </taglib>
