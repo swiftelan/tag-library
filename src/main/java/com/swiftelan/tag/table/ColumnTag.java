@@ -17,10 +17,11 @@ public class ColumnTag extends ComponentTagSupport {
 	public void doTag() throws JspException, IOException {
 		TableTag table = findAncestorTag(this, TableTag.class);
 		if (table.isRenderHeader()) {
-			try (Writer writer = new NullWriter()) {
-				getJspBody().invoke(writer);
+			if (getJspBody() != null) {
+				try (Writer writer = new NullWriter()) {
+					getJspBody().invoke(writer);
+				}
 			}
-
 			startTag(getJspContext().getOut(), "th", getAttributes());
 			if (headerBody == null && header != null) {
 				getJspContext().getOut().append(header);
