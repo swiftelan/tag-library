@@ -4,7 +4,7 @@
 		this.settings = $.extend(true, {}, Table.settings, settings);
 		this.ajaxOption = $.extend(true, {}, Table.ajaxOptions, ajaxOptions);
 		this.$element = $(element);
-		this.$element.on('content-load.' + this.settings.namespace, $.proxy(this.replace, this));
+		this.$element.on(this.getNamespacedEvent('content-load'), $.proxy(this.replace, this));
 	}
 
 	Table.ajaxOptions = {
@@ -19,10 +19,10 @@
 		var data = $.extend(true, {}, this.ajaxOptions, options);
 		var xhr = $.ajax(data);
 		xhr.done($.proxy(function(response) {
-			this.$element.trigger('content-load.' + this.settings.namespace, [ $.parseHTML(response) ]);
+			this.$element.trigger(this.getNamespacedEvent('content-load'), [ $.parseHTML(response) ]);
 		}, this));
 		xhr.fail($.proxy(function(jqXhr, textStatus, error) {
-			this.$element.trigger('content-load-fail.' + this.settings.namespace, [ jqXhr, textStatus, error ]);
+			this.$element.trigger(this.getNamespacedEvent('content-load-fail'), [ jqXhr, textStatus, error ]);
 		}, this));
 	}
 
@@ -30,6 +30,10 @@
 		var $response = $(response);
 		var $newContent = $response.find('table[data-jsp-id="' + this.$element.data('jsp-id') + '"]');
 		this.$element.html($newContent.html());
+	}
+	
+	Table.prototype.getNamespacedEvent = function(event) {
+		return event + '.' + this.settings.namespace;
 	}
 
 	$.fn.table = function(settings, ajaxOptions) {
