@@ -16,6 +16,14 @@ import com.swiftelan.tag.util.EscapeUtil;
 public class ComponentTagSupport extends SimpleTagSupport implements DynamicAttributes {
 	private Map<String, String> attributes = new HashMap<>();
 	
+	public void setId(String id) {
+		attributes.put("id", id);
+	}
+	
+	public String getId() {
+		return attributes.get("id");
+	}
+	
 	public void setCssClass(String cssClass) {
 		attributes.put("class", cssClass);
 	}

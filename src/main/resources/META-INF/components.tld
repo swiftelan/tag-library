@@ -13,6 +13,13 @@
 		<name>table</name>
 		<tag-class>com.swiftelan.tag.table.TableTag</tag-class>
 		<body-content>scriptless</body-content>
+		
+		<attribute>
+			<description>This attribute defines a unique identifier which must be unique in the whole document.</description>
+			<name>id</name>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
 
 		<attribute>
 			<description>Space separated list of classes for the table.</description>
@@ -70,5 +77,50 @@
 		<name>columnHeader</name>
 		<tag-class>com.swiftelan.tag.table.ColumnHeaderTag</tag-class>
 		<body-content>scriptless</body-content>
+	</tag>
+	
+	<tag>
+		<description>Generate an &lt;input type="checkbox"&gt; element.</description>
+		<name>checkbox</name>
+		<tag-class>com.swiftelan.tag.input.CheckboxTag</tag-class>
+		<body-content>scriptless</body-content>
+		
+		<attribute>
+			<description>Space separated list of classes.</description>
+			<name>class</name>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description>The value that will be submitted with the form.</description>
+			<name>value</name>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description>Name of the element.</description>
+			<name>name</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description>This attribute defines a unique identifier which must be unique in the whole document.</description>
+			<name>id</name>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description>Indicates that the element should be checked on page load. If the value is 'true' or 'checked' the element will be checked.</description>
+			<name>checked</name>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description>Determines if the element must be filled. If the value is 'true' or 'required' the element will be required.</description>
+			<name>required</name>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
 	</tag>
 </taglib>
