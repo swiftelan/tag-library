@@ -80,9 +80,9 @@
 	</tag>
 	
 	<tag>
-		<description>Generate an &lt;input type="checkbox"&gt; element.</description>
-		<name>checkbox</name>
-		<tag-class>com.swiftelan.tag.input.CheckboxTag</tag-class>
+		<description>Generate an &lt;input&gt; element.</description>
+		<name>input</name>
+		<tag-class>com.swiftelan.tag.input.InputTag</tag-class>
 		<body-content>scriptless</body-content>
 		
 		<attribute>
@@ -111,6 +111,12 @@
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
+			<description>The type if input element.</description>
+			<name>type</name>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
 			<description>Indicates that the element should be checked on page load. If the value is 'true' or 'checked' the element will be checked.</description>
 			<name>checked</name>
 			<rtexprvalue>true</rtexprvalue>
@@ -128,5 +134,12 @@
 			<rtexprvalue>true</rtexprvalue>
 			<type>java.lang.String</type>
 		</attribute>
+		<attribute>
+			<description>Determines if this control can be automatically completed by the browser.</description>
+			<name>autocomplete</name>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<dynamic-attributes>true</dynamic-attributes>
 	</tag>
 </taglib>

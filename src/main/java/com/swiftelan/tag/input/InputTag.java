@@ -1,8 +1,17 @@
 package com.swiftelan.tag.input;
 
+import java.io.IOException;
+
+import javax.servlet.jsp.JspException;
+
 import com.swiftelan.tag.ComponentTagSupport;
 
-public class InputTagSupport extends ComponentTagSupport {
+public class InputTag extends ComponentTagSupport {
+
+	@Override
+	public void doTag() throws JspException, IOException {
+		startTag(getJspContext().getOut(), "input", getAttributes());
+	}
 
 	public void setValue(String value) {
 		getAttributes().put("value", value);
@@ -52,8 +61,16 @@ public class InputTagSupport extends ComponentTagSupport {
 		return getAttributes().get("disabled");
 	}
 
+	public void setChecked(String checked) {
+		setBooleanAttribute("checked", checked);
+	}
+
+	public String getChecked() {
+		return getAttributes().get("checked");
+	}
+
 	protected void setBooleanAttribute(String attributeName, String value) {
-		if (value != null && (attributeName.equals(value) || "true" == value)) {
+		if (value != null && (attributeName.equals(value) || "true".equals(value))) {
 			getAttributes().put(attributeName, attributeName);
 		} else {
 			getAttributes().remove(attributeName);
