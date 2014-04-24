@@ -1,27 +1,20 @@
 package com.swiftelan.tag.input;
 
 import java.io.IOException;
-import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 import javax.servlet.jsp.JspException;
 
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.swiftelan.tag.TestJspContext;
 
 public class InputTagTest {
-	private static ResourceBundle expected;
 
 	private InputTag tag;
 	private TestJspContext context;
-
-	@BeforeClass
-	public static void beforeClass() {
-		expected = ResourceBundle.getBundle("com.swiftelan.tag.input.input-tag-test");
-	}
 
 	@Before
 	public void before() {
@@ -203,7 +196,8 @@ public class InputTagTest {
 	public void checkboxDefaultValue() throws JspException, IOException {
 		tag.setType("checkbox");
 		tag.doTag();
-		Assert.assertEquals(expected.getString("default.value"), context.getOut().getWriter().toString());
+		Assert.assertTrue(hasAttribute("type", tag.getType()));
+		Assert.assertTrue(hasAttribute("name", tag.getName()));
 	}
 
 	@Test
@@ -211,7 +205,9 @@ public class InputTagTest {
 		tag.setType("checkbox");
 		tag.setChecked("true");
 		tag.doTag();
-		Assert.assertEquals(expected.getString("default.value.checked"), context.getOut().getWriter().toString());
+		Assert.assertTrue(hasAttribute("type", tag.getType()));
+		Assert.assertTrue(hasAttribute("checked", "checked"));
+		Assert.assertTrue(hasAttribute("name", tag.getName()));
 	}
 
 	@Test
@@ -219,7 +215,9 @@ public class InputTagTest {
 		tag.setType("checkbox");
 		tag.setValue("foo");
 		tag.doTag();
-		Assert.assertEquals(expected.getString("foo.value"), context.getOut().getWriter().toString());
+		Assert.assertTrue(hasAttribute("type", tag.getType()));
+		Assert.assertTrue(hasAttribute("name", tag.getName()));
+		Assert.assertTrue(hasAttribute("value", tag.getValue()));
 	}
 
 	@Test
@@ -228,6 +226,20 @@ public class InputTagTest {
 		tag.setChecked("true");
 		tag.setValue("foo");
 		tag.doTag();
-		Assert.assertEquals(expected.getString("foo.value.checked"), context.getOut().getWriter().toString());
+		Assert.assertTrue(hasAttribute("type", tag.getType()));
+		Assert.assertTrue(hasAttribute("checked", "checked"));
+		Assert.assertTrue(hasAttribute("name", tag.getName()));
+		Assert.assertTrue(hasAttribute("value", tag.getValue()));
+	}
+
+	private boolean hasAttribute(String attribute, String value) {
+		StringBuilder sb = new StringBuilder(100);
+		sb.append("<input(.*)");
+		sb.append(" ");
+		sb.append(attribute);
+		sb.append("=\"");
+		sb.append(value);
+		sb.append("\"(.*)>");
+		return Pattern.matches(sb.toString(), context.getOut().getWriter().toString());
 	}
 }

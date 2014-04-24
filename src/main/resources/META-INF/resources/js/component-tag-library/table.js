@@ -5,15 +5,15 @@
 		this.ajaxOption = $.extend(true, {}, Table.ajaxOptions, ajaxOptions);
 		this.$element = $(element);
 		this.$element.on(this.getNamespacedEvent('content-load'), $.proxy(this.replace, this));
-	}
+	};
 
 	Table.ajaxOptions = {
 		url : window.location.pathname
-	}
+	};
 
 	Table.settings = {
 		namespace : 'component-tag-library.table'
-	}
+	};
 
 	Table.prototype.update = function(options) {
 		var data = $.extend(true, {}, this.ajaxOptions, options);
@@ -24,17 +24,17 @@
 		xhr.fail($.proxy(function(jqXhr, textStatus, error) {
 			this.$element.trigger(this.getNamespacedEvent('content-load-fail'), [ jqXhr, textStatus, error ]);
 		}, this));
-	}
+	};
 
 	Table.prototype.replace = function(event, response) {
 		var $response = $(response);
 		var $newContent = $response.find('table[data-jsp-id="' + this.$element.data('jsp-id') + '"]');
 		this.$element.html($newContent.html());
-	}
+	};
 	
 	Table.prototype.getNamespacedEvent = function(event) {
 		return event + '.' + this.settings.namespace;
-	}
+	};
 
 	$.fn.table = function(settings, ajaxOptions) {
 		return this.each(function() {
@@ -48,7 +48,7 @@
 				data[settings](ajaxOptions);
 			}
 		});
-	}
+	};
 
 	$.fn.table.Constructor = Table;
 

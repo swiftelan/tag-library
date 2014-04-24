@@ -6,17 +6,19 @@ import java.io.Writer;
 import javax.servlet.jsp.JspContext;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.JspFragment;
+import javax.servlet.jsp.tagext.SimpleTag;
 
-public class MockJspFragment extends JspFragment {
+public class SimpleTagJspFragment extends JspFragment {
+	private SimpleTag tag;
 	private JspContext context;
 
-	public MockJspFragment(JspContext context) {
-		this.context = context;
+	public SimpleTagJspFragment(JspContext context, SimpleTag tag) {
+		this.tag = tag;
 	}
 
 	@Override
 	public void invoke(Writer out) throws JspException, IOException {
-		// No-op
+		tag.doTag();
 	}
 
 	@Override

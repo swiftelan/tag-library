@@ -7,8 +7,8 @@ import javax.servlet.jsp.JspWriter;
 
 public class TestJspWriter extends JspWriter {
 	private StringWriter delegate;
-	
-	public TestJspWriter () {
+
+	public TestJspWriter() {
 		this(200, false);
 	}
 
@@ -16,7 +16,7 @@ public class TestJspWriter extends JspWriter {
 		super(bufferSize, autoFlush);
 		delegate = new StringWriter(bufferSize);
 	}
-	
+
 	public StringWriter getWriter() {
 		return delegate;
 	}

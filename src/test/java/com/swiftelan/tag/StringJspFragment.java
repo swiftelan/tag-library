@@ -10,7 +10,7 @@ import javax.servlet.jsp.tagext.JspFragment;
 public class StringJspFragment extends JspFragment {
 	private JspContext context;
 	private String bodyContent;
-	
+
 	public StringJspFragment(JspContext context, String bodyContent) {
 		this.context = context;
 		this.bodyContent = bodyContent;

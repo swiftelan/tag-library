@@ -20,7 +20,7 @@ import org.junit.Test;
 public class ComponentTagSupportTest {
 	private static Map<String, PropertyDescriptor> propertyDescriptors;
 	private ComponentTagSupport tag;
-	
+
 	@BeforeClass
 	public static void beforeClass() throws IntrospectionException {
 		propertyDescriptors = new HashMap<>();
@@ -30,7 +30,7 @@ public class ComponentTagSupportTest {
 			propertyDescriptors.put(descriptor.getName(), descriptor);
 		}
 	}
-	
+
 	@Before
 	public void before() {
 		tag = new ComponentTagSupport();
@@ -46,7 +46,7 @@ public class ComponentTagSupportTest {
 		descriptor.getWriteMethod().invoke(tag, string);
 		Assert.assertEquals(string, descriptor.getReadMethod().invoke(tag));
 	}
-	
+
 	@Test
 	public void dynamicAttribute() throws JspException {
 		String name = "data-toggle";
@@ -54,7 +54,7 @@ public class ComponentTagSupportTest {
 		tag.setDynamicAttribute(null, name, value);
 		Assert.assertEquals(value, tag.getAttributes().get(name));
 	}
-	
+
 	@Test
 	public void writeAttribute() throws IOException {
 		String key = "href";
@@ -64,7 +64,7 @@ public class ComponentTagSupportTest {
 		tag.writeAttributes(writer, tag.getAttributes());
 		Assert.assertEquals(" href=\"http://example.com\"", writer.getBuffer().toString());
 	}
-	
+
 	@Test
 	public void writeNullAttribute() throws IOException {
 		String key = "href";
@@ -73,5 +73,12 @@ public class ComponentTagSupportTest {
 		StringWriter writer = new StringWriter();
 		tag.writeAttributes(writer, tag.getAttributes());
 		Assert.assertTrue(writer.getBuffer().toString().isEmpty());
+	}
+
+	@Test
+	public void id() {
+		String id = "foo";
+		tag.setId(id);
+		Assert.assertEquals(id, tag.getId());
 	}
 }

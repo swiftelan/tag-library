@@ -7,6 +7,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 import javax.servlet.jsp.JspContext;
 import javax.servlet.jsp.JspException;
@@ -61,7 +62,7 @@ public class TableTagTest {
 
 	@Test
 	public void oneItem() throws JspException, IOException {
-		Collection<String> items = new ArrayList<>();
+		Collection<Object> items = new ArrayList<>();
 		items.add("foo");
 		tag.setItems(items);
 		tag.doTag();
@@ -69,12 +70,13 @@ public class TableTagTest {
 		Assert.assertEquals(expected.getString("one.item"), jspContext.getOut().getWriter().toString());
 		Assert.assertFalse(jspContext.getAttributeNamesInScope(PageContext.PAGE_SCOPE).hasMoreElements());
 	}
-	
+
 	@Test
 	public void classAttribute() throws JspException, IOException {
 		tag.setCssClass("css-class");
 		tag.doTag();
-		Assert.assertEquals(expected.getString("class.attribute"), jspContext.getOut().getWriter().toString());
+		Assert.assertTrue(Pattern.matches("<table(.*) class=\"" + tag.getCssClass() + "\"(.*)>(.*)", jspContext.getOut()
+				.getWriter().toString()));
 		Assert.assertFalse(jspContext.getAttributeNamesInScope(PageContext.PAGE_SCOPE).hasMoreElements());
 	}
 
@@ -102,7 +104,7 @@ public class TableTagTest {
 		Assert.assertEquals(expected.getString("one.item"), jspContext.getOut().getWriter().toString());
 		Assert.assertFalse(jspContext.getAttributeNamesInScope(PageContext.PAGE_SCOPE).hasMoreElements());
 	}
-	
+
 	@Test
 	public void nullVar() throws JspException, IOException {
 		Collection<String> items = new ArrayList<>();
@@ -167,7 +169,7 @@ public class TableTagTest {
 		Assert.assertNotNull(header);
 		Assert.assertTrue(header.booleanValue());
 	}
-	
+
 	@Test
 	public void emptyVarStatus() throws JspException, IOException {
 		Collection<String> items = new ArrayList<>();
@@ -192,7 +194,7 @@ public class TableTagTest {
 		Assert.assertEquals(expected.getString("one.item"), jspContext.getOut().getWriter().toString());
 		Assert.assertFalse(jspContext.getAttributeNamesInScope(PageContext.PAGE_SCOPE).hasMoreElements());
 	}
-	
+
 	@Test
 	public void nullVarStatus() throws JspException, IOException {
 		Collection<String> items = new ArrayList<>();

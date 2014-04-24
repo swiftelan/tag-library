@@ -15,19 +15,19 @@ import com.swiftelan.tag.util.EscapeUtil;
 
 public class ComponentTagSupport extends SimpleTagSupport implements DynamicAttributes {
 	private Map<String, String> attributes = new HashMap<>();
-	
+
 	public void setId(String id) {
 		attributes.put("id", id);
 	}
-	
+
 	public String getId() {
 		return attributes.get("id");
 	}
-	
+
 	public void setCssClass(String cssClass) {
 		attributes.put("class", cssClass);
 	}
-	
+
 	public String getCssClass() {
 		return attributes.get("class");
 	}
@@ -51,7 +51,7 @@ public class ComponentTagSupport extends SimpleTagSupport implements DynamicAttr
 		}
 		for (Entry<String, String> attr : attributes.entrySet()) {
 			String value = attr.getValue();
-			if (value == null){
+			if (value == null) {
 				continue;
 			}
 			writer.append(" ");
@@ -61,7 +61,11 @@ public class ComponentTagSupport extends SimpleTagSupport implements DynamicAttr
 			writer.append("\"");
 		}
 	}
-	
+
+	protected void characters(Writer writer, String value) throws IOException {
+		writer.append(EscapeUtil.escape(value));
+	}
+
 	protected Map<String, String> getAttributes() {
 		return attributes;
 	}
@@ -70,7 +74,8 @@ public class ComponentTagSupport extends SimpleTagSupport implements DynamicAttr
 	public void setDynamicAttribute(String uri, String localName, Object value) throws JspException {
 		attributes.put(localName, String.valueOf(value));
 	}
-	
+
+	@SuppressWarnings("unchecked")
 	protected static <T> T findAncestorTag(JspTag from, Class<T> klass) {
 		return (T) findAncestorWithClass(from, klass);
 	}

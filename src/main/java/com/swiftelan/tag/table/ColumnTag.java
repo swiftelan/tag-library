@@ -41,7 +41,7 @@ public class ColumnTag extends ComponentTagSupport {
 		this.header = header;
 	}
 
-	public void setHeaderBody(JspFragment headerBody) {
-		this.headerBody = headerBody;
+	public void setHeaderBody(JspFragment jspBody) {
+		headerBody = jspBody;
 	}
 }

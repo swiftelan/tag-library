@@ -22,7 +22,7 @@ public class EscapeUtil {
 
 	/**
 	 * Escape a string.
-	 * 
+	 *
 	 * @param src
 	 *            the string to escape; must not be null
 	 * @return the escaped string

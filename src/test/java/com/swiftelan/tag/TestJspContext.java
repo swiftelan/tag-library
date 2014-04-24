@@ -8,13 +8,12 @@ import java.util.Map.Entry;
 import java.util.TreeMap;
 
 import javax.el.ELContext;
+import javax.el.ExpressionFactory;
 import javax.el.StandardELContext;
 import javax.servlet.jsp.JspContext;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.el.ExpressionEvaluator;
 import javax.servlet.jsp.el.VariableResolver;
-
-import org.apache.el.ExpressionFactoryImpl;
 
 @SuppressWarnings("deprecation")
 public class TestJspContext extends JspContext {
@@ -25,21 +24,21 @@ public class TestJspContext extends JspContext {
 	private Map<Integer, Map<String, Object>> scopes;
 	private TestJspWriter writer;
 	private ELContext elContext;
-	
+
 	public TestJspContext() {
 		pageScope = new HashMap<>();
 		requestScope = new HashMap<>();
 		sessionScope = new HashMap<>();
 		applicationScope = new HashMap<>();
 		scopes = new TreeMap<>();
-		
+
 		scopes.put(Integer.valueOf(PageContext.PAGE_SCOPE), pageScope);
 		scopes.put(Integer.valueOf(PageContext.REQUEST_SCOPE), requestScope);
 		scopes.put(Integer.valueOf(PageContext.SESSION_SCOPE), sessionScope);
 		scopes.put(Integer.valueOf(PageContext.APPLICATION_SCOPE), applicationScope);
-		
+
 		writer = new TestJspWriter();
-		elContext = new StandardELContext(new ExpressionFactoryImpl());
+		elContext = new StandardELContext(ExpressionFactory.newInstance());
 	}
 
 	@Override

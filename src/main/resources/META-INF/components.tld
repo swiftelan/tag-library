@@ -13,7 +13,7 @@
 		<name>table</name>
 		<tag-class>com.swiftelan.tag.table.TableTag</tag-class>
 		<body-content>scriptless</body-content>
-		
+
 		<attribute>
 			<description>This attribute defines a unique identifier which must be unique in the whole document.</description>
 			<name>id</name>
@@ -71,20 +71,20 @@
 			<type>java.lang.String</type>
 		</attribute>
 	</tag>
-	
+
 	<tag>
 		<description>Define a column header that has a complex body.</description>
 		<name>columnHeader</name>
 		<tag-class>com.swiftelan.tag.table.ColumnHeaderTag</tag-class>
 		<body-content>scriptless</body-content>
 	</tag>
-	
+
 	<tag>
 		<description>Generate an &lt;input&gt; element.</description>
 		<name>input</name>
 		<tag-class>com.swiftelan.tag.input.InputTag</tag-class>
 		<body-content>scriptless</body-content>
-		
+
 		<attribute>
 			<description>Space separated list of classes.</description>
 			<name>class</name>
@@ -141,5 +141,91 @@
 			<type>java.lang.String</type>
 		</attribute>
 		<dynamic-attributes>true</dynamic-attributes>
+	</tag>
+
+	<tag>
+		<description>Build a master detail control with the specified items.</description>
+		<name>masterDetail</name>
+		<tag-class>com.swiftelan.tag.master.MasterDetailTag</tag-class>
+		<body-content>scriptless</body-content>
+
+		<attribute>
+			<description>The objects that will be iterated over to build the control. A master list item and a detail pane is generated for each item.</description>
+			<name>items</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.util.Collection</type>
+		</attribute>
+
+		<attribute>
+			<description>Name of the variable with the current item in page scope.</description>
+			<name>var</name>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+
+		<attribute>
+			<description>Name of the variable with the loop status in page scope.</description>
+			<name>varStatus</name>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+
+		<attribute>
+			<description>CSS class attribute of the master list.</description>
+			<name>listClass</name>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+
+		<attribute>
+			<description>CSS class attribute of the container element for the master list.</description>
+			<name>listContainerClass</name>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+
+		<attribute>
+			<description>CSS class attribute of the container element for the detail panes.</description>
+			<name>detailContainerClass</name>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+	</tag>
+
+	<tag>
+		<description>Define the content of an item in the master list.</description>
+		<name>item</name>
+		<tag-class>com.swiftelan.tag.master.ItemTag</tag-class>
+		<body-content>scriptless</body-content>
+
+		<attribute>
+			<description>Grouping expression for items in the master list. When the result of the expression is different from the previous item the result is rendered as a header in the master list.</description>
+			<name>groupExpression</name>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		
+		<attribute>
+			<description>Space separated list of classes.</description>
+			<name>class</name>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+	</tag>
+
+	<tag>
+		<description>Define the content of an item in the detail pane.</description>
+		<name>detail</name>
+		<tag-class>com.swiftelan.tag.master.DetailTag</tag-class>
+		<body-content>scriptless</body-content>
+		
+		<attribute>
+			<description>Space separated list of classes.</description>
+			<name>class</name>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
 	</tag>
 </taglib>

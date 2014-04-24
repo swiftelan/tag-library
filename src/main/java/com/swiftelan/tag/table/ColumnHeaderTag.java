@@ -11,7 +11,7 @@ public class ColumnHeaderTag extends ComponentTagSupport {
 	@Override
 	public void doTag() throws JspException, IOException {
 		TableTag table = findAncestorTag(this, TableTag.class);
-		
+
 		if (table.isRenderHeader()) {
 			ColumnTag column = findAncestorTag(this, ColumnTag.class);
 			column.setHeaderBody(getJspBody());
