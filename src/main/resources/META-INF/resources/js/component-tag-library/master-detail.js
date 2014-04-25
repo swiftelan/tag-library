@@ -10,12 +10,14 @@
 		});
 		var id = this.$element.data('master-detail-id');
 		var index = sessionStorage.getItem(id);
-		if (index != null && isFinite(index)) {
-			this.select(this.$element.find('li > [data-master-detail-index="' + index + '"]'));
+		var selectedElement = this.$element.find('li > [data-master-detail-index="' + index + '"]');
+		if (index != null && isFinite(index) && selectedElement.length > 0) {
+			this.select(selectedElement);
 		} else {
 			$('[data-master-detail-id="' + id + '"][data-master-detail="master"] > :not(.nav-header):first').addClass('active');
 			$('[data-master-detail-id="' + id + '"][data-master-detail="detail"] > :first').removeClass('hide');
 		}
+		this.$element.trigger(this.getNamespacedEvent('initialized'));
 	};
 
 	MasterDetail.settings = {
