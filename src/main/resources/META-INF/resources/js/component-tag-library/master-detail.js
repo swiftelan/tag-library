@@ -8,14 +8,13 @@
 			event.preventDefault();
 			that.selectEventHandler(event.target);
 		});
-		var id = this.$element.data('master-detail-id');
-		var index = sessionStorage.getItem(id);
+		this.settings.id = this.$element.data('master-detail-id');
+		var index = sessionStorage.getItem(this.settings.id);
 		var selectedElement = this.$element.find('li > [data-master-detail-index="' + index + '"]');
 		if (index != null && isFinite(index) && selectedElement.length > 0) {
 			this.select(selectedElement);
 		} else {
-			$('[data-master-detail-id="' + id + '"][data-master-detail="master"] > :not(.nav-header):first').addClass('active');
-			$('[data-master-detail-id="' + id + '"][data-master-detail="detail"] > :first').removeClass('hide');
+			this.select(this.$element.find('a:first'));
 		}
 		this.$element.trigger(this.getNamespacedEvent('initialized'));
 	};
@@ -29,17 +28,21 @@
 	};
 
 	MasterDetail.prototype.select = function(element) {
-		var $masterItem = $(element);
+		this.$currentItem = $(element);
 
 		this.$element.children('.active').removeClass('active');
-		$masterItem.parent().addClass('active');
-		var id = this.$element.data('master-detail-id');
-		var index = $masterItem.data('master-detail-index');
-		var $detailContainer = $('[data-master-detail-id="' + id + '"][data-master-detail="detail"]');
+		this.$currentItem.parent().addClass('active');
+		this.settings.id = this.$element.data('master-detail-id');
+		var index = this.$currentItem.data('master-detail-index');
+		var $detailContainer = $('[data-master-detail-id="' + this.settings.id + '"][data-master-detail="detail"]');
 		$detailContainer.children(':not(.hide)').addClass('hide');
-		$detailContainer.children('[data-master-detail-index="' + index + '"]').removeClass('hide');
+		this.$currentDetail = $detailContainer.children('[data-master-detail-index="' + index + '"]').removeClass('hide');
 
-		sessionStorage.setItem(id, index);
+		sessionStorage.setItem(this.settings.id, index);
+		var selectedEvent = jQuery.Event(this.getNamespacedEvent('selected'), {
+			detail : this.$currentDetail
+		});
+		this.$currentItem.trigger(selectedEvent);
 	};
 
 	MasterDetail.prototype.selectEventHandler = function(element) {
