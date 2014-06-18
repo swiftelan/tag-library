@@ -23,22 +23,22 @@ public class ItemTag extends ComponentTagSupport {
 				if (!ItemTag.equals(groupValue, previousGroupValue)) {
 					Map<String, String> attributes = new HashMap<>();
 					attributes.put("class", "nav-header");
-					startTag(getJspContext().getOut(), "li", attributes);
-					characters(getJspContext().getOut(), groupValue);
-					endTag(getJspContext().getOut(), "li");
+					start("li", attributes);
+					characters(groupValue);
+					end("li");
 					getJspContext().setAttribute(PREVIOUS_GROUP_VALUE, groupValue);
 				}
 			}
-			startTag(getJspContext().getOut(), "li", getAttributes());
+			start("li", getAttributes());
 			Map<String, String> attrs = new HashMap<>();
 			attrs.put("href", "#");
 			attrs.put("data-master-detail-index", Integer.toString(parent.getLoopStatus().getIndex()));
-			startTag(getJspContext().getOut(), "a", attrs);
+			start("a", attrs);
 			if (getJspBody() != null) {
 				getJspBody().invoke(null);
 			}
-			endTag(getJspContext().getOut(), "a");
-			endTag(getJspContext().getOut(), "li");
+			end("a");
+			end("li");
 			if (parent.getLoopStatus().isLast()) {
 				getJspContext().removeAttribute(PREVIOUS_GROUP_VALUE);
 			}

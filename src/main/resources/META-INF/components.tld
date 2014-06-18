@@ -206,7 +206,7 @@
 				<type>java.lang.String</type>
 			</deferred-value>
 		</attribute>
-		
+
 		<attribute>
 			<description>Space separated list of classes.</description>
 			<name>class</name>
@@ -220,12 +220,83 @@
 		<name>detail</name>
 		<tag-class>com.swiftelan.tag.master.DetailTag</tag-class>
 		<body-content>scriptless</body-content>
-		
+
 		<attribute>
 			<description>Space separated list of classes.</description>
 			<name>class</name>
 			<rtexprvalue>true</rtexprvalue>
 			<type>java.lang.String</type>
 		</attribute>
+	</tag>
+
+	<tag>
+		<description>Render page navigation links for large data sets.</description>
+		<name>paging</name>
+		<tag-class>com.swiftelan.tag.paging.PagingTag</tag-class>
+		<body-content>scriptless</body-content>
+
+		<attribute>
+			<description>The total number of items in the data set.</description>
+			<name>totalNumberOfItems</name>
+			<required>true</required>
+			<deferred-value>
+				<type>java.lang.Integer</type>
+			</deferred-value>
+		</attribute>
+
+		<attribute>
+			<description>The index of the first result being displayed.</description>
+			<name>firstResult</name>
+			<required>true</required>
+			<deferred-value>
+				<type>java.lang.Integer</type>
+			</deferred-value>
+		</attribute>
+
+		<attribute>
+			<description>The number of items displayed on a single page.</description>
+			<name>pageSize</name>
+			<required>true</required>
+			<deferred-value>
+				<type>java.lang.Integer</type>
+			</deferred-value>
+		</attribute>
+		
+		<attribute>
+			<description>If true always display a first page link even if the first page is not in the range of pages around the current page. 
+			Default is true.</description>
+			<name>alwaysDisplayFirstPageLink</name>
+			<rtexprvalue>true</rtexprvalue>
+			<type>boolean</type>
+		</attribute>
+		
+		<attribute>
+			<description>If true always display a last page link even if the last page is not in the range of pages around the current page. 
+			Default is true.</description>
+			<name>alwaysDisplayLastPageLink</name>
+			<rtexprvalue>true</rtexprvalue>
+			<type>boolean</type>
+		</attribute>
+		
+		<attribute>
+			<description>CSS class to apply to the list element.</description>
+			<name>class</name>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+	</tag>
+	
+	<tag>
+		<description>Define the text for the next page link. The body of the tag will be used as the link body.</description>
+		<name>next</name>
+		<tag-class>com.swiftelan.tag.paging.NextTag</tag-class>
+		<body-content>scriptless</body-content>
+	</tag>
+	
+	<tag>
+		<description>Define the text for the last page link. The body of the tag will be used as the link body.</description>
+		<name>previous</name>
+		<tag-class>com.swiftelan.tag.paging.PreviousTag</tag-class>
+		<body-content>scriptless</body-content>
 	</tag>
 </taglib>

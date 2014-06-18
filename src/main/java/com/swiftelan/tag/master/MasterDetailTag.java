@@ -21,18 +21,18 @@ public class MasterDetailTag extends LoopTagSupport implements JspIdConsumer {
 	public void doTag() throws JspException, IOException {
 		Map<String, String> attributes = new HashMap<>();
 		attributes.put("class", listContainerClass);
-		startTag(getJspContext().getOut(), "div", attributes);
+		start("div", attributes);
 		doMaster();
-		endTag(getJspContext().getOut(), "div");
+		end("div");
 
 		reset();
 		attributes.clear();
 		attributes.put("data-master-detail-id", jspId);
 		attributes.put("data-master-detail", "detail");
 		attributes.put("class", detailContainerClass);
-		startTag(getJspContext().getOut(), "div", attributes);
+		start("div", attributes);
 		doDetail();
-		endTag(getJspContext().getOut(), "div");
+		end("div");
 	}
 
 	private void doMaster() throws IOException, JspException {
@@ -41,14 +41,14 @@ public class MasterDetailTag extends LoopTagSupport implements JspIdConsumer {
 		attributes.put("data-master-detail-id", jspId);
 		attributes.put("data-master-detail", "master");
 		attributes.put("class", listClass);
-		startTag(getJspContext().getOut(), "ul", attributes);
+		start("ul", attributes);
 		if (getJspBody() != null) {
 			while (getIterator().hasNext()) {
 				getIterator().next();
 				getJspBody().invoke(null);
 			}
 		}
-		endTag(getJspContext().getOut(), "ul");
+		end("ul");
 	}
 
 	private void doDetail() throws JspException, IOException {

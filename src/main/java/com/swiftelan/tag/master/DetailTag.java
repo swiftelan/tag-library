@@ -18,11 +18,11 @@ public class DetailTag extends ComponentTagSupport {
 			} else {
 				setCssClass(getCssClass().concat(" hide"));
 			}
-			startTag(getJspContext().getOut(), "div", getAttributes());
+			start("div", getAttributes());
 			if (getJspBody() != null) {
 				getJspBody().invoke(null);
 			}
-			endTag(getJspContext().getOut(), "div");
+			end("div");
 		}
 	}
 }

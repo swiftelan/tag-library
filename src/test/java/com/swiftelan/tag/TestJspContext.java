@@ -23,7 +23,7 @@ public class TestJspContext extends JspContext {
 	private Map<String, Object> applicationScope;
 	private Map<Integer, Map<String, Object>> scopes;
 	private TestJspWriter writer;
-	private ELContext elContext;
+	private StandardELContext elContext;
 
 	public TestJspContext() {
 		pageScope = new HashMap<>();
@@ -39,6 +39,9 @@ public class TestJspContext extends JspContext {
 
 		writer = new TestJspWriter();
 		elContext = new StandardELContext(ExpressionFactory.newInstance());
+		elContext.putContext(JspContext.class, this);
+		elContext.addELResolver(new TestScopedAttributeELResolver());
+
 	}
 
 	@Override

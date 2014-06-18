@@ -10,7 +10,7 @@ public class InputTag extends ComponentTagSupport {
 
 	@Override
 	public void doTag() throws JspException, IOException {
-		startTag(getJspContext().getOut(), "input", getAttributes());
+		start("input", getAttributes());
 	}
 
 	public void setValue(String value) {

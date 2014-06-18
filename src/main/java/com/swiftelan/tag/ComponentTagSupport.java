@@ -6,7 +6,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.DynamicAttributes;
 import javax.servlet.jsp.tagext.JspTag;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
@@ -32,17 +34,25 @@ public class ComponentTagSupport extends SimpleTagSupport implements DynamicAttr
 		return attributes.get("class");
 	}
 
-	protected void startTag(Writer writer, String element, Map<String, String> attributes) throws IOException {
+	protected void start(String element, Map<String, String> attributes, Writer writer) throws IOException {
 		writer.append("<");
 		writer.append(element);
 		writeAttributes(writer, attributes);
 		writer.append(">");
 	}
 
-	protected void endTag(Writer writer, String element) throws IOException {
+	protected void start(String element, Map<String, String> attributes) throws IOException {
+		start(element, attributes, getJspContext().getOut());
+	}
+
+	protected void end(String element, Writer writer) throws IOException {
 		writer.append("</");
 		writer.append(element);
 		writer.append(">");
+	}
+
+	protected void end(String element) throws IOException {
+		end(element, getJspContext().getOut());
 	}
 
 	protected void writeAttributes(Writer writer, Map<String, String> attributes) throws IOException {
@@ -62,8 +72,16 @@ public class ComponentTagSupport extends SimpleTagSupport implements DynamicAttr
 		}
 	}
 
-	protected void characters(Writer writer, String value) throws IOException {
-		writer.append(EscapeUtil.escape(value));
+	protected void characters(String value, boolean escape, Writer writer) throws IOException {
+		writer.append(escape ? EscapeUtil.escape(value) : value);
+	}
+
+	protected void characters(String value, boolean escape) throws IOException {
+		characters(value, escape, getJspContext().getOut());
+	}
+
+	protected void characters(String value) throws IOException {
+		characters(value, true, getJspContext().getOut());
 	}
 
 	protected Map<String, String> getAttributes() {
@@ -78,5 +96,9 @@ public class ComponentTagSupport extends SimpleTagSupport implements DynamicAttr
 	@SuppressWarnings("unchecked")
 	protected static <T> T findAncestorTag(JspTag from, Class<T> klass) {
 		return (T) findAncestorWithClass(from, klass);
+	}
+
+	protected HttpServletRequest getRequest() {
+		return (HttpServletRequest) getJspContext().getAttribute(PageContext.REQUEST, PageContext.REQUEST_SCOPE);
 	}
 }

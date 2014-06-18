@@ -12,30 +12,30 @@ public class TableTag extends LoopTagSupport implements JspIdConsumer {
 
 	@Override
 	public void doTag() throws JspException, IOException {
-		startTag(getJspContext().getOut(), "table", getAttributes());
+		start("table", getAttributes());
 
 		doTableHeader();
 
-		startTag(getJspContext().getOut(), "tbody", null);
+		start("tbody", null);
 		while (getIterator().hasNext()) {
 			getIterator().next();
-			startTag(getJspContext().getOut(), "tr", null);
+			start("tr", null);
 			getJspBody().invoke(null);
-			endTag(getJspContext().getOut(), "tr");
+			end("tr");
 		}
 		unexposeVariables();
-		endTag(getJspContext().getOut(), "tbody");
-		endTag(getJspContext().getOut(), "table");
+		end("tbody");
+		end("table");
 	}
 
 	private void doTableHeader() throws JspException, IOException {
-		startTag(getJspContext().getOut(), "thead", null);
-		startTag(getJspContext().getOut(), "tr", null);
+		start("thead", null);
+		start("tr", null);
 		renderHeader = true;
 		getJspBody().invoke(null);
 		renderHeader = false;
-		endTag(getJspContext().getOut(), "tr");
-		endTag(getJspContext().getOut(), "thead");
+		end("tr");
+		end("thead");
 	}
 
 	boolean isRenderHeader() {

@@ -22,18 +22,18 @@ public class ColumnTag extends ComponentTagSupport {
 					getJspBody().invoke(writer);
 				}
 			}
-			startTag(getJspContext().getOut(), "th", getAttributes());
+			start("th", getAttributes());
 			if (headerBody == null && header != null) {
 				getJspContext().getOut().append(header);
 			} else if (headerBody != null) {
 				headerBody.invoke(null);
 			}
 
-			endTag(getJspContext().getOut(), "th");
+			end("th");
 		} else {
-			startTag(getJspContext().getOut(), "td", getAttributes());
+			start("td", getAttributes());
 			getJspBody().invoke(null);
-			endTag(getJspContext().getOut(), "td");
+			end("td");
 		}
 	}
 
