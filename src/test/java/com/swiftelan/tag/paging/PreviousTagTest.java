@@ -73,7 +73,7 @@ public class PreviousTagTest {
 
 		paging.setJspBody(new SimpleTagJspFragment(context, tag));
 		paging.doTag();
-		Assert.assertEquals("<li><a href=\"%2Ffoo%2Fbar.jsp%3FfirstResult%3D4%26pageSize%3D1\">«</a></li>", context.getOut()
+		Assert.assertEquals("<li><a href=\"/foo/bar.jsp?firstResult=4&amp;pageSize=1\">«</a></li>", context.getOut()
 				.getWriter().toString());
 	}
 
@@ -96,8 +96,8 @@ public class PreviousTagTest {
 		pagingContext.setAttribute(RequestDispatcher.INCLUDE_QUERY_STRING, "firstResult=5", PageContext.REQUEST_SCOPE);
 		paging.setJspBody(new SimpleTagJspFragment(context, tag));
 		paging.doTag();
-		Assert.assertEquals("<li><a href=\"%2Ffoo%2Fbar.action%3FfirstResult%3D4%26pageSize%3D1\">«</a></li>", context
-				.getOut().getWriter().toString());
+		Assert.assertEquals("<li><a href=\"/foo/bar.action?firstResult=4&amp;pageSize=1\">«</a></li>", context.getOut()
+				.getWriter().toString());
 	}
 
 	@Test
@@ -121,8 +121,8 @@ public class PreviousTagTest {
 
 		paging.setJspBody(new SimpleTagJspFragment(context, tag));
 		paging.doTag();
-		Assert.assertEquals("<li><a href=\"%2Ffoo%2Fbar.action%3Ftest%3Dtrue%26firstResult%3D4%26pageSize%3D1\">«</a></li>",
-				context.getOut().getWriter().toString());
+		Assert.assertEquals("<li><a href=\"/foo/bar.action?test=true&amp;firstResult=4&amp;pageSize=1\">«</a></li>", context
+				.getOut().getWriter().toString());
 	}
 
 	@Test
