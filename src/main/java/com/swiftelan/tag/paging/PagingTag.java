@@ -1,8 +1,6 @@
 package com.swiftelan.tag.paging;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -150,12 +148,8 @@ public class PagingTag extends ComponentTagSupport implements JspIdConsumer {
 		query = Strings.replaceParameter(query, getFirstResultParameterName(), Integer.toString(firstResult));
 		query = Strings.replaceParameter(query, getPageSizeParameterName(), Integer.toString(pageSize));
 		sb.append(query);
+		attrs.put("href", sb.toString());
 
-		try {
-			attrs.put("href", URLEncoder.encode(sb.toString(), "UTF-8"));
-		} catch (UnsupportedEncodingException e) {
-			throw new JspTagException(e);
-		}
 		return attrs;
 	}
 
