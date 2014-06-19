@@ -16,7 +16,7 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
 import com.swiftelan.tag.util.EscapeUtil;
 
 public class ComponentTagSupport extends SimpleTagSupport implements DynamicAttributes {
-	private Map<String, String> attributes = new HashMap<>();
+	private final Map<String, String> attributes = new HashMap<>();
 
 	public void setId(String id) {
 		attributes.put("id", id);
@@ -99,6 +99,6 @@ public class ComponentTagSupport extends SimpleTagSupport implements DynamicAttr
 	}
 
 	protected HttpServletRequest getRequest() {
-		return (HttpServletRequest) getJspContext().getAttribute(PageContext.REQUEST, PageContext.REQUEST_SCOPE);
+		return (HttpServletRequest) getJspContext().findAttribute(PageContext.REQUEST);
 	}
 }
