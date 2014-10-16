@@ -17,6 +17,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+@SuppressWarnings("javadoc")
 public class ComponentTagSupportTest {
 	private static Map<String, PropertyDescriptor> propertyDescriptors;
 	private ComponentTagSupport tag;

@@ -7,10 +7,19 @@ import javax.servlet.jsp.JspContext;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.JspFragment;
 
-public class MockJspFragment extends JspFragment {
+/**
+ * JspFragment that does nothing.
+ *
+ */
+public class NoopJspFragment extends JspFragment {
 	private JspContext context;
 
-	public MockJspFragment(JspContext context) {
+	/**
+	 * Initialize a fragment
+	 * 
+	 * @param context Context for the fragment
+	 */
+	public NoopJspFragment(JspContext context) {
 		this.context = context;
 	}
 

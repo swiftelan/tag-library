@@ -20,9 +20,10 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.swiftelan.tag.MockJspFragment;
+import com.swiftelan.tag.NoopJspFragment;
 import com.swiftelan.tag.TestJspContext;
 
+@SuppressWarnings("javadoc")
 public class TableTagTest {
 	private static ResourceBundle expected;
 	private TableTag tag;
@@ -40,7 +41,7 @@ public class TableTagTest {
 		jspContext = new TestJspContext();
 		tag.setJspContext(jspContext);
 		jspId = "simulated-container-supplied-id";
-		JspFragment body = new MockJspFragment(jspContext);
+		JspFragment body = new NoopJspFragment(jspContext);
 		tag.setJspBody(body);
 		tag.setJspId(jspId);
 	}

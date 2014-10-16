@@ -6,6 +6,10 @@ import javax.servlet.jsp.JspException;
 
 import com.swiftelan.tag.ComponentTagSupport;
 
+/**
+ * Tag class that includes arbitrary HTML or JSP tag content in the table column header
+ *
+ */
 public class ColumnHeaderTag extends ComponentTagSupport {
 
 	@Override

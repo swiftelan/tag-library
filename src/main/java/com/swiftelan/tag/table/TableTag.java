@@ -7,6 +7,12 @@ import javax.servlet.jsp.tagext.JspIdConsumer;
 
 import com.swiftelan.tag.LoopTagSupport;
 
+/**
+ * Tag handler for rendering an HTML {@code <table>} element.
+ *
+ * @see ColumnTag
+ * @see ColumnHeaderTag
+ */
 public class TableTag extends LoopTagSupport implements JspIdConsumer {
 	private boolean renderHeader;
 

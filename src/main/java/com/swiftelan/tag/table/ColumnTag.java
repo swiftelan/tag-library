@@ -9,6 +9,10 @@ import javax.servlet.jsp.tagext.JspFragment;
 import com.swiftelan.tag.ComponentTagSupport;
 import com.swiftelan.tag.NullWriter;
 
+/**
+ * Tag handler for rendering table {@code <th>} and {@code <td>} elements
+ *
+ */
 public class ColumnTag extends ComponentTagSupport {
 	private String header;
 	private JspFragment headerBody;
@@ -37,11 +41,22 @@ public class ColumnTag extends ComponentTagSupport {
 		}
 	}
 
+	/**
+	 * Set the column header's content
+	 *
+	 * @param header
+	 */
 	public void setHeader(String header) {
 		this.header = header;
 	}
 
-	public void setHeaderBody(JspFragment jspBody) {
+	/**
+	 * Set the column header's content as a {@link JspFragment}
+	 *
+	 * @param jspBody Fragment containing the header content
+	 * @see ColumnHeaderTag
+	 */
+	void setHeaderBody(JspFragment jspBody) {
 		headerBody = jspBody;
 	}
 }

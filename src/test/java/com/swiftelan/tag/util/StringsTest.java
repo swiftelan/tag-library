@@ -3,6 +3,7 @@ package com.swiftelan.tag.util;
 import org.junit.Assert;
 import org.junit.Test;
 
+@SuppressWarnings("javadoc")
 public class StringsTest {
 
 	@Test

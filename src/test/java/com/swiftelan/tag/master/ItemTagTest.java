@@ -17,6 +17,7 @@ import org.junit.Test;
 import com.swiftelan.tag.StringJspFragment;
 import com.swiftelan.tag.TestJspContext;
 
+@SuppressWarnings("javadoc")
 public class ItemTagTest {
 	private ItemTag tag;
 	private TestJspContext context;

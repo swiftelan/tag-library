@@ -15,6 +15,18 @@ import com.swiftelan.tag.ComponentTagSupport;
 import com.swiftelan.tag.util.EscapeUtil;
 import com.swiftelan.tag.util.Strings;
 
+/**
+ * Tag handler for rendering a paging control.
+ *
+ * <p>
+ * A component that uses a list of links for paging. A range of pages around the current page is rendered. By default a first
+ * and last page links are also displayed. Next and previous page links can be included by using the {@link NextTag next} and
+ * {@link PreviousTag previous} tags in the body.
+ * </p>
+ *
+ * @see NextTag
+ * @see PreviousTag
+ */
 public class PagingTag extends ComponentTagSupport implements JspIdConsumer {
 	private ValueExpression _totalNumberOfItems;
 	private ValueExpression _firstResult;
@@ -78,7 +90,7 @@ public class PagingTag extends ComponentTagSupport implements JspIdConsumer {
 				attrs.put("class", "disabled");
 				start("li", attrs);
 				start("a", null);
-				characters("&hellip;", false);
+				characters("\u2026");
 				end("a");
 				end("li");
 			}
@@ -92,7 +104,7 @@ public class PagingTag extends ComponentTagSupport implements JspIdConsumer {
 				attrs.put("class", "disabled");
 				start("li", attrs);
 				start("a", null);
-				characters("&hellip;", false);
+				characters("\u2026");
 				end("a");
 				end("li");
 			}
@@ -198,14 +210,32 @@ public class PagingTag extends ComponentTagSupport implements JspIdConsumer {
 		return firstResult;
 	}
 
+	/**
+	 * Set the expression that will be used to get the number of items displayed on a single page.
+	 *
+	 * @param pageSize
+	 *            Expression for the page size
+	 */
 	public void setPageSize(ValueExpression pageSize) {
 		_pageSize = pageSize;
 	}
 
+	/**
+	 * Set the expression that will be used to get the total number of items in the result set if paging were not being used.
+	 *
+	 * @param totalNumberOfItems
+	 *            Expression for the total number of items
+	 */
 	public void setTotalNumberOfItems(ValueExpression totalNumberOfItems) {
 		_totalNumberOfItems = totalNumberOfItems;
 	}
 
+	/**
+	 * Set the expression that will be used to get the index of the first item displayed in the current page.
+	 *
+	 * @param firstResult
+	 *            Expression for the index of the first item
+	 */
 	public void setFirstResult(ValueExpression firstResult) {
 		_firstResult = firstResult;
 	}

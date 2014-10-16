@@ -15,7 +15,7 @@
 		<body-content>scriptless</body-content>
 
 		<attribute>
-			<description>This attribute defines a unique identifier which must be unique in the whole document.</description>
+			<description>Unique identifier which must be unique in the whole document.</description>
 			<name>id</name>
 			<rtexprvalue>true</rtexprvalue>
 			<type>java.lang.String</type>
@@ -29,11 +29,11 @@
 		</attribute>
 
 		<attribute>
-			<description>The objects that will be iterated over to build the table. A row is generated for each element in the collection.</description>
+			<description>The objects that will be iterated over to build the table. A row is generated for each element.</description>
 			<name>items</name>
 			<required>true</required>
 			<rtexprvalue>true</rtexprvalue>
-			<type>java.util.Collection</type>
+			<type>java.lang.Iterable</type>
 		</attribute>
 
 		<attribute>
@@ -84,19 +84,119 @@
 		<name>input</name>
 		<tag-class>com.swiftelan.tag.input.InputTag</tag-class>
 		<body-content>scriptless</body-content>
-
+		
+		<attribute>
+			<description>If the type attribute is 'file', this attribute defines the types of files the element will accept.</description>
+			<name>accept</name>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		
+		<attribute>
+			<description>Controls if the element's value can be completed by the browser.</description>
+			<name>autocomplete</name>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		
+		<attribute>
+			<description>Automatically focus the element when the page is loaded.</description>
+			<name>autofocus</name>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		
+		<attribute>
+			<description>Indicates that the element should be checked on page load. If the value is 'true' or 'checked' the element will be checked.</description>
+			<name>checked</name>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		
 		<attribute>
 			<description>Space separated list of classes.</description>
 			<name>class</name>
 			<rtexprvalue>true</rtexprvalue>
 			<type>java.lang.String</type>
 		</attribute>
+		
 		<attribute>
-			<description>The value that will be submitted with the form.</description>
-			<name>value</name>
+			<description>Determines if the element should be disabled. If the value is 'true' or 'disabled' the element will be disabled.</description>
+			<name>disabled</name>
 			<rtexprvalue>true</rtexprvalue>
 			<type>java.lang.String</type>
 		</attribute>
+		
+		<attribute>
+			<description>Associate the element with a form element. The value should be the ID of a form element.</description>
+			<name>form</name>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<description>URL to use for form submission.</description>
+			<name>formaction</name>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		
+		<attribute>
+			<description>HTTP method to use for form submission.</description>
+			<name>formmethod</name>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		
+		<attribute>
+			<description>Bypass validation for form submission.</description>
+			<name>formnovalidate</name>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		
+		<attribute>
+			<description>Browsing context for form submission.</description>
+			<name>formtarget</name>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		
+		<attribute>
+			<description>Unique identifier which must be unique in the whole document.</description>
+			<name>id</name>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		
+		<attribute>
+			<description>Specifies the kind of input mechanism would be most helpful for users entering content into the control.</description>
+			<name>inputmode</name>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		
+		<attribute>
+			<description>Autocompelete options for the control.</description>
+			<name>list</name>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		
+		<attribute>
+			<description>Maximum allowed value for the control.</description>
+			<name>max</name>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		
+		<attribute>
+			<description>Maximum allowed length for the value of the control.</description>
+			<name>maxlength</name>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		
+		<attribute>
+			<description>Minimum allowed value for the control.</description>
+			<name>min</name>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		
+		<attribute>
+			<description>Whether to allow multiple values.</description>
+			<name>multiple</name>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		
 		<attribute>
 			<description>Name of the element.</description>
 			<name>name</name>
@@ -104,42 +204,64 @@
 			<rtexprvalue>true</rtexprvalue>
 			<type>java.lang.String</type>
 		</attribute>
+		
 		<attribute>
-			<description>This attribute defines a unique identifier which must be unique in the whole document.</description>
-			<name>id</name>
+			<description>Pattern used to match the value of the control.</description>
+			<name>pattern</name>
 			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
 		</attribute>
+		
 		<attribute>
-			<description>The type if input element.</description>
-			<name>type</name>
+			<description>Label displayed within the control when no value is present.</description>
+			<name>placeholder</name>
 			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
 		</attribute>
+		
 		<attribute>
-			<description>Indicates that the element should be checked on page load. If the value is 'true' or 'checked' the element will be checked.</description>
-			<name>checked</name>
+			<description>Whether to allow the value to be edited by the user.</description>
+			<name>readonly</name>
 			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
 		</attribute>
+		
 		<attribute>
 			<description>Determines if the element must be filled. If the value is 'true' or 'required' the element will be required.</description>
 			<name>required</name>
 			<rtexprvalue>true</rtexprvalue>
 			<type>java.lang.String</type>
 		</attribute>
+		
 		<attribute>
-			<description>Determines if the element should be disabled. If the value is 'true' or 'disabled' the element will be disabled.</description>
-			<name>disabled</name>
+			<description>Size of the control.</description>
+			<name>size</name>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		
+		<attribute>
+			<description>URI for the location of the resource.</description>
+			<name>src</name>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		
+		<attribute>
+			<description>Amount to increment or decrement the control's value.</description>
+			<name>step</name>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		
+		<attribute>
+			<description>The type if input element.</description>
+			<name>type</name>
 			<rtexprvalue>true</rtexprvalue>
 			<type>java.lang.String</type>
 		</attribute>
+		
 		<attribute>
-			<description>Determines if this control can be automatically completed by the browser.</description>
-			<name>autocomplete</name>
+			<description>The value that will be submitted with the form.</description>
+			<name>value</name>
 			<rtexprvalue>true</rtexprvalue>
 			<type>java.lang.String</type>
 		</attribute>
+		
 		<dynamic-attributes>true</dynamic-attributes>
 	</tag>
 

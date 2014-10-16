@@ -19,6 +19,7 @@ import com.swiftelan.tag.SimpleTagJspFragment;
 import com.swiftelan.tag.StringJspFragment;
 import com.swiftelan.tag.TestJspContext;
 
+@SuppressWarnings("javadoc")
 public class NextTagTest {
 	private NextTag tag;
 	private TestJspContext context;

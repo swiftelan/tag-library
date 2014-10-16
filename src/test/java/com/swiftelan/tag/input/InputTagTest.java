@@ -5,12 +5,16 @@ import java.util.regex.Pattern;
 
 import javax.servlet.jsp.JspException;
 
+import org.hamcrest.core.StringEndsWith;
+import org.hamcrest.core.StringStartsWith;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import com.swiftelan.tag.TestJspContext;
 
+@SuppressWarnings("javadoc")
 public class InputTagTest {
 
 	private InputTag tag;
@@ -55,13 +59,13 @@ public class InputTagTest {
 	public void required() {
 		String required = "required";
 		tag.setRequired(required);
-		Assert.assertEquals("A 'required' value should enable the attribute", required, tag.getRequired());
+		Assert.assertEquals("A 'required' value should enable the attribute", "", tag.getRequired());
 	}
 
 	@Test
 	public void requiredTrue() {
 		tag.setRequired("true");
-		Assert.assertEquals("A 'true' value should enable the attribute", "required", tag.getRequired());
+		Assert.assertEquals("A 'true' value should enable the attribute", "", tag.getRequired());
 	}
 
 	@Test
@@ -81,26 +85,8 @@ public class InputTagTest {
 	}
 
 	@Test
-	public void autocompleteFalse() {
-		// Set the tag to the required state
-		tag.setAutocomplete("autocomplete");
-		tag.setAutocomplete("false");
-		// Verify that the attribute is no longer required
-		Assert.assertNull("A 'false' value should remove the attribute", tag.getAutocomplete());
-	}
-
-	@Test
-	public void autocompleteGiberish() {
-		// Set the tag to the required state
-		tag.setAutocomplete("autocomplete");
-		tag.setAutocomplete("93jjske");
-		// Verify that the attribute is no longer required
-		Assert.assertNull("A 'false' value should remove the attribute", tag.getAutocomplete());
-	}
-
-	@Test
 	public void autocomplete() {
-		String autocomplete = "autocomplete";
+		String autocomplete = "name";
 		tag.setAutocomplete(autocomplete);
 		Assert.assertEquals("A 'autocomplete' value should enable the attribute", autocomplete, tag.getAutocomplete());
 	}
@@ -143,13 +129,13 @@ public class InputTagTest {
 	public void disabled() {
 		String disabled = "disabled";
 		tag.setDisabled(disabled);
-		Assert.assertEquals("A 'disabled' value should enable the attribute", disabled, tag.getDisabled());
+		Assert.assertEquals("A 'disabled' value should enable the attribute", "", tag.getDisabled());
 	}
 
 	@Test
 	public void disabledTrue() {
 		tag.setDisabled("true");
-		Assert.assertEquals("A 'true' value should enable the attribute", "disabled", tag.getDisabled());
+		Assert.assertEquals("A 'true' value should enable the attribute", "", tag.getDisabled());
 	}
 
 	@Test
@@ -183,13 +169,13 @@ public class InputTagTest {
 	public void checked() {
 		String checked = "checked";
 		tag.setChecked(checked);
-		Assert.assertEquals("A 'checked' value should enable the attribute", checked, tag.getChecked());
+		Assert.assertEquals("A 'checked' value should enable the attribute", "", tag.getChecked());
 	}
 
 	@Test
 	public void checkedTrue() {
 		tag.setChecked("true");
-		Assert.assertEquals("A 'true' value should enable the attribute", "checked", tag.getChecked());
+		Assert.assertEquals("A 'true' value should enable the attribute", "", tag.getChecked());
 	}
 
 	@Test
@@ -206,7 +192,7 @@ public class InputTagTest {
 		tag.setChecked("true");
 		tag.doTag();
 		Assert.assertTrue(hasAttribute("type", tag.getType()));
-		Assert.assertTrue(hasAttribute("checked", "checked"));
+		Assert.assertTrue(hasAttribute("checked", ""));
 		Assert.assertTrue(hasAttribute("name", tag.getName()));
 	}
 
@@ -221,15 +207,67 @@ public class InputTagTest {
 	}
 
 	@Test
-	public void checkboxfooValueChecked() throws JspException, IOException {
+	public void checkboxFooValueChecked() throws JspException, IOException {
 		tag.setType("checkbox");
 		tag.setChecked("true");
 		tag.setValue("foo");
 		tag.doTag();
-		Assert.assertTrue(hasAttribute("type", tag.getType()));
-		Assert.assertTrue(hasAttribute("checked", "checked"));
+		Assert.assertTrue(hasAttribute("type", "checkbox"));
+		Assert.assertTrue(hasAttribute("checked", ""));
 		Assert.assertTrue(hasAttribute("name", tag.getName()));
-		Assert.assertTrue(hasAttribute("value", tag.getValue()));
+		Assert.assertTrue(hasAttribute("value", "foo"));
+	}
+
+	@Test
+	public void accept() throws JspException, IOException {
+		tag.setAccept(".jpg");
+		tag.doTag();
+		Assert.assertTrue(hasAttribute("accept", ".jpg"));
+	}
+
+	@Test
+	public void autofocus() throws JspException, IOException {
+		tag.setAutofocus("autofocus");
+		tag.doTag();
+		Assert.assertTrue(hasAttribute("autofocus", ""));
+	}
+
+	@Test
+	public void autofocusTrue() throws JspException, IOException {
+		tag.setAutofocus("true");
+		tag.doTag();
+		Assert.assertTrue(hasAttribute("autofocus", ""));
+	}
+
+	@Test
+	public void form() throws JspException, IOException {
+		tag.setForm("someform");
+		tag.doTag();
+		Assert.assertTrue(hasAttribute("form", "someform"));
+	}
+
+	@Test
+	public void formaction() throws JspException, IOException {
+		String value = "avalue";
+		tag.setFormaction(value);
+		tag.doTag();
+		Assert.assertTrue(hasAttribute("formaction", value));
+	}
+
+	@Test
+	public void formmethod() throws JspException, IOException {
+		String value = "avalue";
+		tag.setFormmethod(value);
+		tag.doTag();
+		Assert.assertTrue(hasAttribute("formmethod", value));
+	}
+
+	@Test
+	public void tagDecorator() throws JspException, IOException {
+		Mockito.when(context.getServletContext().getInitParameter(InputTag.INPUT_TAG_DECORATOR)).thenReturn(TestInputTagDecorator.class.getName());
+		tag.doTag();
+		Assert.assertThat(context.getOut().toString(), new StringStartsWith("before"));
+		Assert.assertThat(context.getOut().toString(), new StringEndsWith("after"));
 	}
 
 	private boolean hasAttribute(String attribute, String value) {

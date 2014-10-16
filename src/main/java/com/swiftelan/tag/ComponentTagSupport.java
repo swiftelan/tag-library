@@ -1,5 +1,6 @@
 package com.swiftelan.tag;
 
+import java.beans.BeanInfo;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.HashMap;
@@ -15,23 +16,73 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
 
 import com.swiftelan.tag.util.EscapeUtil;
 
+/**
+ * Base class for tag handlers rendering HTML elements.
+ * <p>
+ * The ComponentTagSupport class defines utilities for generating HTML elements. The class adds convenience methods for
+ * writing HTML elements to the response. The class also defines {@link BeanInfo} for overriding the
+ * {@link Object#getClass()} method so the tag can use a 'class' attribute.
+ * </p>
+ *
+ */
 public class ComponentTagSupport extends SimpleTagSupport implements DynamicAttributes {
 	private final Map<String, String> attributes = new HashMap<>();
 
+	/**
+	 * Set the id attribute of the HTML element.
+	 *
+	 * @param id
+	 *            Identifier for the HTML element.
+	 */
 	public void setId(String id) {
 		attributes.put("id", id);
 	}
 
+	/**
+	 * Get the id attribute of the HTML element.
+	 *
+	 * @return Identifier for the HTML element or null if none exists.
+	 */
 	public String getId() {
 		return attributes.get("id");
 	}
 
+	/**
+	 * Set the class attribute of the HTML element.
+	 *
+	 * @param cssClass
+	 *            Space separated list of classes for the HTML element.
+	 */
 	public void setCssClass(String cssClass) {
 		attributes.put("class", cssClass);
 	}
 
+	/**
+	 * Get the class attribute of the HTML element.
+	 *
+	 * @return Value of the class attribute or null if none exists.
+	 */
 	public String getCssClass() {
 		return attributes.get("class");
+	}
+
+	/**
+	 * Set the tab navigation position for the element.
+	 *
+	 * @param tabindex
+	 *            Index of the element for tab navigation.
+	 */
+	public void setTabindex(String tabindex) {
+		attributes.put("tabindex", tabindex);
+	}
+
+	/**
+	 * Get the tab navigation position for the element.
+	 *
+	 * @return Index of the element for tab navigation.
+	 */
+	public String getTabindex() {
+		return attributes.get("tabindex");
 	}
 
 	protected void start(String element, Map<String, String> attributes, Writer writer) throws IOException {
@@ -72,16 +123,8 @@ public class ComponentTagSupport extends SimpleTagSupport implements DynamicAttr
 		}
 	}
 
-	protected void characters(String value, boolean escape, Writer writer) throws IOException {
-		writer.append(escape ? EscapeUtil.escape(value) : value);
-	}
-
-	protected void characters(String value, boolean escape) throws IOException {
-		characters(value, escape, getJspContext().getOut());
-	}
-
 	protected void characters(String value) throws IOException {
-		characters(value, true, getJspContext().getOut());
+		getJspContext().getOut().append(EscapeUtil.escape(value));
 	}
 
 	protected Map<String, String> getAttributes() {

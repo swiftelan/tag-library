@@ -5,9 +5,21 @@ import java.io.StringWriter;
 
 import javax.servlet.jsp.JspWriter;
 
+/**
+ * This class implements a JspWriter that collects the data passed to it in a string.
+ * <p>
+ * This class uses a {@link StringWriter} to collect the data as a string.
+ * </p>
+ * @see StringBuffer
+ * @see StringWriter
+ */
 public class TestJspWriter extends JspWriter {
+
 	private StringWriter delegate;
 
+	/**
+	 * Initialize an empty writer
+	 */
 	public TestJspWriter() {
 		this(200, false);
 	}
@@ -17,6 +29,10 @@ public class TestJspWriter extends JspWriter {
 		delegate = new StringWriter(bufferSize);
 	}
 
+	/**
+	 * Get the writer containing the content
+	 * @return Writer with the content.
+	 */
 	public StringWriter getWriter() {
 		return delegate;
 	}
@@ -160,4 +176,8 @@ public class TestJspWriter extends JspWriter {
 		delegate.write(cbuf, off, len);
 	}
 
+	@Override
+	public String toString() {
+		return delegate.toString();
+	}
 }

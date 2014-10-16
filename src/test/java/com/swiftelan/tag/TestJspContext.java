@@ -8,15 +8,31 @@ import java.util.Map.Entry;
 import java.util.TreeMap;
 
 import javax.el.ELContext;
+import javax.el.ELResolver;
 import javax.el.ExpressionFactory;
 import javax.el.StandardELContext;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspContext;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.el.ExpressionEvaluator;
 import javax.servlet.jsp.el.VariableResolver;
 
+import org.mockito.Mockito;
+
+/**
+ * TestJspContext implements a JspContext for unit testing.
+ * <p>
+ * The class provides map based context lookups for page, request, session and application scopes. The {@link ELContext} has the
+ * standard {@link ELResolver}s as well as one that resolves variables in the scopes.
+ * </p>
+ * @see StandardELContext
+ * @see TestJspWriter
+ * @see TestScopedAttributeELResolver
+ */
 @SuppressWarnings("deprecation")
 public class TestJspContext extends JspContext {
+
 	private Map<String, Object> pageScope;
 	private Map<String, Object> requestScope;
 	private Map<String, Object> sessionScope;
@@ -24,7 +40,11 @@ public class TestJspContext extends JspContext {
 	private Map<Integer, Map<String, Object>> scopes;
 	private TestJspWriter writer;
 	private StandardELContext elContext;
+	private ServletContext servletContext;
 
+	/**
+	 * Initialize an empty JspContext
+	 */
 	public TestJspContext() {
 		pageScope = new HashMap<>();
 		requestScope = new HashMap<>();
@@ -42,6 +62,14 @@ public class TestJspContext extends JspContext {
 		elContext.putContext(JspContext.class, this);
 		elContext.addELResolver(new TestScopedAttributeELResolver());
 
+		HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
+		servletContext = Mockito.mock(ServletContext.class);
+		Mockito.when(request.getServletContext()).thenReturn(servletContext);
+		requestScope.put(PageContext.REQUEST, request);
+	}
+
+	public ServletContext getServletContext() {
+		return servletContext;
 	}
 
 	@Override

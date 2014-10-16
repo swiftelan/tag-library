@@ -11,6 +11,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+@SuppressWarnings("javadoc")
 public class LoopTagSupportTest {
 	private LoopTagSupport tag;
 	private TestJspContext jspContext;
