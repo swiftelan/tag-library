@@ -11,14 +11,13 @@ import com.swiftelan.tag.ComponentTagSupport;
 
 /**
  * Tag handler for rendering a single item in a list of items.
- *
  * <p>
  * Render a list item for an item in a master-detail component. Items can be grouped under a heading by specifying a
  * {@link #setGroupExpression(ValueExpression) group expression}.
  * </p>
- *
  */
 public class ItemTag extends ComponentTagSupport {
+
 	static final String PREVIOUS_GROUP_VALUE = "com.swiftelan.tag.master.previousGroupValue";
 	private ValueExpression groupExpression;
 
@@ -57,10 +56,9 @@ public class ItemTag extends ComponentTagSupport {
 	/**
 	 * Group multiple items under a heading.
 	 * <p>
-	 * Expression is evaluated every invocation. The value is compared to the previous value and if there is a change, the
-	 * value is rendered as a list item with the {@code class="nav-header"}.
+	 * Expression is evaluated every invocation. The value is compared to the previous value and if there is a change, the value
+	 * is rendered as a list item with the {@code class="nav-header"}.
 	 * </p>
-	 *
 	 * @param groupExpression Expression to use for grouping items in this list
 	 */
 	public void setGroupExpression(ValueExpression groupExpression) {

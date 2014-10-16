@@ -2,9 +2,9 @@ package com.swiftelan.tag.util;
 
 /**
  * Utility methods for escaping strings
- *
  */
 public class EscapeUtil {
+
 	private static final String[] ESCAPES;
 
 	static {
@@ -26,7 +26,6 @@ public class EscapeUtil {
 
 	/**
 	 * Escape a string.
-	 *
 	 * @param src the string to escape; must not be null
 	 * @return the escaped string
 	 */

@@ -11,9 +11,9 @@ import com.swiftelan.tag.NullWriter;
 
 /**
  * Tag handler for rendering table {@code <th>} and {@code <td>} elements
- *
  */
 public class ColumnTag extends ComponentTagSupport {
+
 	private String header;
 	private JspFragment headerBody;
 
@@ -43,8 +43,7 @@ public class ColumnTag extends ComponentTagSupport {
 
 	/**
 	 * Set the column header's content
-	 *
-	 * @param header
+	 * @param header Value to use as the header for the column
 	 */
 	public void setHeader(String header) {
 		this.header = header;
@@ -52,7 +51,6 @@ public class ColumnTag extends ComponentTagSupport {
 
 	/**
 	 * Set the column header's content as a {@link JspFragment}
-	 *
 	 * @param jspBody Fragment containing the header content
 	 * @see ColumnHeaderTag
 	 */

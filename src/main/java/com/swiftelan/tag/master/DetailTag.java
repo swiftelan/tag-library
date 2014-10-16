@@ -8,12 +8,10 @@ import com.swiftelan.tag.ComponentTagSupport;
 
 /**
  * Tag handler for detail sections of a master-detail component.
- *
  * <p>
- * Render a detail section the body is wrapped in an element containing information linking it to an item in iteration
- * controlled by the parent {@link MasterDetailTag}.
+ * Render a detail section the body is wrapped in an element containing information linking it to an item in iteration controlled
+ * by the parent {@link MasterDetailTag}.
  * </p>
- *
  * @see ItemTag
  * @see MasterDetailTag
  */

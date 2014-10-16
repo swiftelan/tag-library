@@ -17,17 +17,16 @@ import com.swiftelan.tag.util.Strings;
 
 /**
  * Tag handler for rendering a paging control.
- *
  * <p>
- * A component that uses a list of links for paging. A range of pages around the current page is rendered. By default a first
- * and last page links are also displayed. Next and previous page links can be included by using the {@link NextTag next} and
+ * A component that uses a list of links for paging. A range of pages around the current page is rendered. By default a first and
+ * last page links are also displayed. Next and previous page links can be included by using the {@link NextTag next} and
  * {@link PreviousTag previous} tags in the body.
  * </p>
- *
  * @see NextTag
  * @see PreviousTag
  */
 public class PagingTag extends ComponentTagSupport implements JspIdConsumer {
+
 	private ValueExpression _totalNumberOfItems;
 	private ValueExpression _firstResult;
 	private ValueExpression _pageSize;
@@ -142,17 +141,17 @@ public class PagingTag extends ComponentTagSupport implements JspIdConsumer {
 		String uri;
 		String query;
 		switch (getRequest().getDispatcherType()) {
-		case FORWARD:
-			uri = (String) getJspContext().getAttribute(RequestDispatcher.FORWARD_REQUEST_URI, PageContext.REQUEST_SCOPE);
-			query = (String) getJspContext().getAttribute(RequestDispatcher.FORWARD_QUERY_STRING, PageContext.REQUEST_SCOPE);
-			break;
-		case INCLUDE:
-			uri = (String) getJspContext().getAttribute(RequestDispatcher.INCLUDE_REQUEST_URI, PageContext.REQUEST_SCOPE);
-			query = (String) getJspContext().getAttribute(RequestDispatcher.INCLUDE_QUERY_STRING, PageContext.REQUEST_SCOPE);
-			break;
-		default:
-			uri = getRequest().getRequestURI();
-			query = getRequest().getQueryString();
+			case FORWARD:
+				uri = (String) getJspContext().getAttribute(RequestDispatcher.FORWARD_REQUEST_URI, PageContext.REQUEST_SCOPE);
+				query = (String) getJspContext().getAttribute(RequestDispatcher.FORWARD_QUERY_STRING, PageContext.REQUEST_SCOPE);
+				break;
+			case INCLUDE:
+				uri = (String) getJspContext().getAttribute(RequestDispatcher.INCLUDE_REQUEST_URI, PageContext.REQUEST_SCOPE);
+				query = (String) getJspContext().getAttribute(RequestDispatcher.INCLUDE_QUERY_STRING, PageContext.REQUEST_SCOPE);
+				break;
+			default:
+				uri = getRequest().getRequestURI();
+				query = getRequest().getQueryString();
 		}
 
 		StringBuilder sb = new StringBuilder(uri);
@@ -212,9 +211,7 @@ public class PagingTag extends ComponentTagSupport implements JspIdConsumer {
 
 	/**
 	 * Set the expression that will be used to get the number of items displayed on a single page.
-	 *
-	 * @param pageSize
-	 *            Expression for the page size
+	 * @param pageSize Expression for the page size
 	 */
 	public void setPageSize(ValueExpression pageSize) {
 		_pageSize = pageSize;
@@ -222,9 +219,7 @@ public class PagingTag extends ComponentTagSupport implements JspIdConsumer {
 
 	/**
 	 * Set the expression that will be used to get the total number of items in the result set if paging were not being used.
-	 *
-	 * @param totalNumberOfItems
-	 *            Expression for the total number of items
+	 * @param totalNumberOfItems Expression for the total number of items
 	 */
 	public void setTotalNumberOfItems(ValueExpression totalNumberOfItems) {
 		_totalNumberOfItems = totalNumberOfItems;
@@ -232,9 +227,7 @@ public class PagingTag extends ComponentTagSupport implements JspIdConsumer {
 
 	/**
 	 * Set the expression that will be used to get the index of the first item displayed in the current page.
-	 *
-	 * @param firstResult
-	 *            Expression for the index of the first item
+	 * @param firstResult Expression for the index of the first item
 	 */
 	public void setFirstResult(ValueExpression firstResult) {
 		_firstResult = firstResult;

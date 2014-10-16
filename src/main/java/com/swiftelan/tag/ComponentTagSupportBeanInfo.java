@@ -8,9 +8,9 @@ import java.util.Collection;
 
 /**
  * Define HTML element attributes as Java methods.
- *
  */
 public class ComponentTagSupportBeanInfo extends SimpleBeanInfo {
+
 	@Override
 	public PropertyDescriptor[] getPropertyDescriptors() {
 		try {
