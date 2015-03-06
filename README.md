@@ -16,7 +16,7 @@ The recommended way to get the library is through Maven. The project is availabl
 ```
 
 ### Taglib Directive
-The JAR defines a tag library with the uri of 'http://swiftelan.com/components'. Here is the directive required to use the library in JSP files.
+The JAR defines a tag library with the uri of `http://swiftelan.com/components`. Here is the directive required to use the library in JSP files.
 ```jsp
 <%@ taglib prefix="comp" uri="http://swiftelan.com/components"%>
 ```
