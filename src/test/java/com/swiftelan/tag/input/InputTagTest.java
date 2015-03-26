@@ -264,7 +264,8 @@ public class InputTagTest {
 
 	@Test
 	public void tagDecorator() throws JspException, IOException {
-		Mockito.when(context.getServletContext().getInitParameter(InputTag.INPUT_TAG_DECORATOR)).thenReturn(TestInputTagDecorator.class.getName());
+		Mockito.when(context.getServletContext().getInitParameter(InputTag.INPUT_TAG_DECORATOR)).thenReturn(
+				TestInputTagDecorator.class.getName());
 		tag.doTag();
 		Assert.assertThat(context.getOut().toString(), new StringStartsWith("before"));
 		Assert.assertThat(context.getOut().toString(), new StringEndsWith("after"));
@@ -280,4 +281,5 @@ public class InputTagTest {
 		sb.append("\"(.*)>");
 		return Pattern.matches(sb.toString(), context.getOut().getWriter().toString());
 	}
+
 }

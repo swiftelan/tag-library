@@ -76,8 +76,8 @@ public class TableTagTest {
 	public void classAttribute() throws JspException, IOException {
 		tag.setCssClass("css-class");
 		tag.doTag();
-		Assert.assertTrue(Pattern.matches("<table(.*) class=\"" + tag.getCssClass() + "\"(.*)>(.*)", jspContext.getOut()
-				.getWriter().toString()));
+		Assert.assertTrue(Pattern.matches("<table(.*) class=\"" + tag.getCssClass() + "\"(.*)>(.*)", jspContext
+				.getOut().getWriter().toString()));
 		Assert.assertFalse(jspContext.getAttributeNamesInScope(PageContext.PAGE_SCOPE).hasMoreElements());
 	}
 
@@ -181,8 +181,8 @@ public class TableTagTest {
 
 			@Override
 			public void invoke(Writer out) throws JspException, IOException {
-				Assert.assertFalse("An empty 'varStatus' attribute should not introduce a page scoped variable.", jspContext
-						.getAttributeNamesInScope(PageContext.PAGE_SCOPE).hasMoreElements());
+				Assert.assertFalse("An empty 'varStatus' attribute should not introduce a page scoped variable.",
+						jspContext.getAttributeNamesInScope(PageContext.PAGE_SCOPE).hasMoreElements());
 			}
 
 			@Override
@@ -206,8 +206,8 @@ public class TableTagTest {
 
 			@Override
 			public void invoke(Writer out) throws JspException, IOException {
-				Assert.assertFalse("A null 'varStatus' attribute should not introduce a page scoped variable.", jspContext
-						.getAttributeNamesInScope(PageContext.PAGE_SCOPE).hasMoreElements());
+				Assert.assertFalse("A null 'varStatus' attribute should not introduce a page scoped variable.",
+						jspContext.getAttributeNamesInScope(PageContext.PAGE_SCOPE).hasMoreElements());
 			}
 
 			@Override

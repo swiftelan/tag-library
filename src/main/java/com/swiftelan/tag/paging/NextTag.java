@@ -11,9 +11,10 @@ import com.swiftelan.tag.ComponentTagSupport;
 /**
  * Tag handler for rendering a next page link in a paging control.
  * <p>
- * The body of the tag will be used as the body of the anchor element for the next page link. If no body is provided then a
- * default arrow symbol will be used.
+ * The body of the tag will be used as the body of the anchor element for the next page link. If no body is provided
+ * then a default arrow symbol will be used.
  * </p>
+ * 
  * @see PagingTag
  */
 public class NextTag extends ComponentTagSupport {

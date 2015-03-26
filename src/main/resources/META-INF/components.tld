@@ -192,6 +192,12 @@
 		</attribute>
 		
 		<attribute>
+			<description>Minimum allowed length for the value of the control.</description>
+			<name>minlength</name>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		
+		<attribute>
 			<description>Whether to allow multiple values.</description>
 			<name>multiple</name>
 			<rtexprvalue>true</rtexprvalue>

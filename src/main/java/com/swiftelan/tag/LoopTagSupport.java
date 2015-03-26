@@ -9,8 +9,9 @@ import javax.servlet.jsp.tagext.SimpleTag;
 /**
  * Base class for tag handlers that iterate over items.
  * <p>
- * Tag handler that mimics the functionality in {@link javax.servlet.jsp.jstl.core.LoopTagSupport} in a {@link SimpleTag}. The
- * class supports page context variables exposing the current object and {@link LoopTagStatus} information.
+ * Tag handler that mimics the functionality in {@link javax.servlet.jsp.jstl.core.LoopTagSupport} in a
+ * {@link SimpleTag}. The class supports page context variables exposing the current object and {@link LoopTagStatus}
+ * information.
  * </p>
  */
 public class LoopTagSupport extends ComponentTagSupport {
@@ -50,8 +51,9 @@ public class LoopTagSupport extends ComponentTagSupport {
 	}
 
 	/**
-	 * Get the iterator for the tag. Multiple invocations of this method will return the same iterator. This means the state of
-	 * the iterator is preserved.
+	 * Get the iterator for the tag. Multiple invocations of this method will return the same iterator. This means the
+	 * state of the iterator is preserved.
+	 * 
 	 * @return Current iterator associated with the tag.
 	 * @see #reset()
 	 */
@@ -84,8 +86,9 @@ public class LoopTagSupport extends ComponentTagSupport {
 	}
 
 	/**
-	 * Place current object and loop status variables in the page context. This only exposes the variables if variable names have
-	 * been specified.
+	 * Place current object and loop status variables in the page context. This only exposes the variables if variable
+	 * names have been specified.
+	 * 
 	 * @see #setVar(String)
 	 * @see #setVarStatus(String)
 	 */
@@ -101,6 +104,7 @@ public class LoopTagSupport extends ComponentTagSupport {
 
 	/**
 	 * Remove the current object and loop status variables from the page context.
+	 * 
 	 * @see #setVar(String)
 	 * @see #setVarStatus(String)
 	 */
@@ -124,6 +128,7 @@ public class LoopTagSupport extends ComponentTagSupport {
 
 	/**
 	 * Provide the items to be iterated over.
+	 * 
 	 * @param items {@link Iterable} containing the items to iterate over.
 	 */
 	public void setItems(Iterable<?> items) {
@@ -132,6 +137,7 @@ public class LoopTagSupport extends ComponentTagSupport {
 
 	/**
 	 * Provide a variable name to store the current object in the iteration. The variable is placed in the page context.
+	 * 
 	 * @param var Name of the variable
 	 */
 	public void setVar(String var) {
@@ -142,6 +148,7 @@ public class LoopTagSupport extends ComponentTagSupport {
 
 	/**
 	 * Provide a variable name to store the loop status. The variable is place in the page context.
+	 * 
 	 * @param varStatus Name of the variable
 	 */
 	public void setVarStatus(String varStatus) {
@@ -152,6 +159,7 @@ public class LoopTagSupport extends ComponentTagSupport {
 
 	/**
 	 * Get the current status of the iteration.
+	 * 
 	 * @return Status of the iteration.
 	 */
 	public LoopTagStatus getLoopStatus() {

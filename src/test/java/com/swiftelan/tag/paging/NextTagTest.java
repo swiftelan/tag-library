@@ -60,9 +60,10 @@ public class NextTagTest {
 		pagingContext.setAttribute("totalNumberOfItems", Integer.valueOf(10));
 		pagingContext.setAttribute("pageSize", Integer.valueOf(1));
 		paging.setJspContext(pagingContext);
-		paging.setFirstResult(factory.createValueExpression(pagingContext.getELContext(), "#{firstResult}", Integer.class));
-		paging.setTotalNumberOfItems(factory.createValueExpression(pagingContext.getELContext(), "#{totalNumberOfItems}",
+		paging.setFirstResult(factory.createValueExpression(pagingContext.getELContext(), "#{firstResult}",
 				Integer.class));
+		paging.setTotalNumberOfItems(factory.createValueExpression(pagingContext.getELContext(),
+				"#{totalNumberOfItems}", Integer.class));
 		paging.setPageSize(factory.createValueExpression(pagingContext.getELContext(), "#{pageSize}", Integer.class));
 
 		HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
@@ -106,9 +107,10 @@ public class NextTagTest {
 		pagingContext.setAttribute("firstResult", Integer.valueOf(0));
 		pagingContext.setAttribute("totalNumberOfItems", Integer.valueOf(10));
 		pagingContext.setAttribute("pageSize", Integer.valueOf(1));
-		paging.setFirstResult(factory.createValueExpression(pagingContext.getELContext(), "#{firstResult}", Integer.class));
-		paging.setTotalNumberOfItems(factory.createValueExpression(pagingContext.getELContext(), "#{totalNumberOfItems}",
+		paging.setFirstResult(factory.createValueExpression(pagingContext.getELContext(), "#{firstResult}",
 				Integer.class));
+		paging.setTotalNumberOfItems(factory.createValueExpression(pagingContext.getELContext(),
+				"#{totalNumberOfItems}", Integer.class));
 		paging.setPageSize(factory.createValueExpression(pagingContext.getELContext(), "#{pageSize}", Integer.class));
 
 		HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
@@ -120,8 +122,8 @@ public class NextTagTest {
 
 		paging.setJspBody(new SimpleTagJspFragment(context, tag));
 		paging.doTag();
-		Assert.assertEquals("<li><a href=\"/foo/bar.action?test=true&amp;firstResult=1&amp;pageSize=1\">»</a></li>", context
-				.getOut().getWriter().toString());
+		Assert.assertEquals("<li><a href=\"/foo/bar.action?test=true&amp;firstResult=1&amp;pageSize=1\">»</a></li>",
+				context.getOut().getWriter().toString());
 	}
 
 	@Test

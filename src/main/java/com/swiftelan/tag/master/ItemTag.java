@@ -56,9 +56,10 @@ public class ItemTag extends ComponentTagSupport {
 	/**
 	 * Group multiple items under a heading.
 	 * <p>
-	 * Expression is evaluated every invocation. The value is compared to the previous value and if there is a change, the value
-	 * is rendered as a list item with the {@code class="nav-header"}.
+	 * Expression is evaluated every invocation. The value is compared to the previous value and if there is a change,
+	 * the value is rendered as a list item with the {@code class="nav-header"}.
 	 * </p>
+	 * 
 	 * @param groupExpression Expression to use for grouping items in this list
 	 */
 	public void setGroupExpression(ValueExpression groupExpression) {

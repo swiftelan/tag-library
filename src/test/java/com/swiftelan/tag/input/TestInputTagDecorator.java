@@ -2,6 +2,7 @@ package com.swiftelan.tag.input;
 
 import java.io.IOException;
 
+@SuppressWarnings("javadoc")
 public class TestInputTagDecorator implements InputTagDecorator {
 
 	private InputTag tag;

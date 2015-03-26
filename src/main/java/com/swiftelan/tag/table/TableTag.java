@@ -9,6 +9,7 @@ import com.swiftelan.tag.LoopTagSupport;
 
 /**
  * Tag handler for rendering an HTML {@code <table>} element.
+ * 
  * @see ColumnTag
  * @see ColumnHeaderTag
  */

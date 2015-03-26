@@ -26,11 +26,15 @@ public class EscapeUtil {
 
 	/**
 	 * Escape a string.
+	 * 
 	 * @param src the string to escape; must not be null
 	 * @return the escaped string
 	 */
 	public static String escape(String src) {
 		// first pass to determine the length of the buffer so we only allocate once
+		if (src == null) {
+			return null;
+		}
 		int length = 0;
 		for (int i = 0; i < src.length(); i++) {
 			char c = src.charAt(i);

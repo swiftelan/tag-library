@@ -43,6 +43,7 @@ public class ColumnTag extends ComponentTagSupport {
 
 	/**
 	 * Set the column header's content
+	 * 
 	 * @param header Value to use as the header for the column
 	 */
 	public void setHeader(String header) {
@@ -51,6 +52,7 @@ public class ColumnTag extends ComponentTagSupport {
 
 	/**
 	 * Set the column header's content as a {@link JspFragment}
+	 * 
 	 * @param jspBody Fragment containing the header content
 	 * @see ColumnHeaderTag
 	 */

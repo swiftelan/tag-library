@@ -10,6 +10,7 @@ import javax.servlet.jsp.JspWriter;
  * <p>
  * This class uses a {@link StringWriter} to collect the data as a string.
  * </p>
+ * 
  * @see StringBuffer
  * @see StringWriter
  */
@@ -31,6 +32,7 @@ public class TestJspWriter extends JspWriter {
 
 	/**
 	 * Get the writer containing the content
+	 * 
 	 * @return Writer with the content.
 	 */
 	public StringWriter getWriter() {

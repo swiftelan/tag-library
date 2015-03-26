@@ -5,11 +5,13 @@ package com.swiftelan.tag.util;
  */
 public class Strings {
 
-	private Strings() {}
+	private Strings() {
+	}
 
 	/**
-	 * Replace the value of the named query parameter with the specified value. If multiple parameters exist for the name then
-	 * they will be removed and one parameter will replace them.
+	 * Replace the value of the named query parameter with the specified value. If multiple parameters exist for the
+	 * name then they will be removed and one parameter will replace them.
+	 * 
 	 * @param query Query string containing the parameters
 	 * @param name Name of the parameter to replace
 	 * @param value New value for the parameter
@@ -42,6 +44,7 @@ public class Strings {
 
 	/**
 	 * Find the string between '{' and '}'
+	 * 
 	 * @param value String to search
 	 * @return String between the characters or null if there is not an open and close brace
 	 */

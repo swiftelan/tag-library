@@ -23,9 +23,10 @@ import org.mockito.Mockito;
 /**
  * TestJspContext implements a JspContext for unit testing.
  * <p>
- * The class provides map based context lookups for page, request, session and application scopes. The {@link ELContext} has the
- * standard {@link ELResolver}s as well as one that resolves variables in the scopes.
+ * The class provides map based context lookups for page, request, session and application scopes. The {@link ELContext}
+ * has the standard {@link ELResolver}s as well as one that resolves variables in the scopes.
  * </p>
+ * 
  * @see StandardELContext
  * @see TestJspWriter
  * @see TestScopedAttributeELResolver
@@ -68,6 +69,11 @@ public class TestJspContext extends JspContext {
 		requestScope.put(PageContext.REQUEST, request);
 	}
 
+	/**
+	 * Get the mock servlet context for the unit test.
+	 * 
+	 * @return Servlet context associated with the JspContext.
+	 */
 	public ServletContext getServletContext() {
 		return servletContext;
 	}
