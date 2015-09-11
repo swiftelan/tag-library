@@ -7,7 +7,6 @@ import java.util.Map;
 import javax.el.ValueExpression;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.JspTagException;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.JspIdConsumer;
 
@@ -76,7 +75,7 @@ public class PagingTag extends ComponentTagSupport implements JspIdConsumer {
 		}
 	}
 
-	void renderFirstPageLink() throws IOException, JspTagException {
+	void renderFirstPageLink() throws IOException {
 		// Only render page 1 if not in the page range
 		if (alwaysDisplayFirstPageLink && getFirstPageInRange() > 1) {
 			start("li", null);
@@ -97,7 +96,7 @@ public class PagingTag extends ComponentTagSupport implements JspIdConsumer {
 		}
 	}
 
-	void renderLastPageLink() throws IOException, JspTagException {
+	void renderLastPageLink() throws IOException {
 		if (alwaysDisplayLastPageLink && getLastPageInRange() < getTotalNumberOfPages()) {
 			if (getLastPageInRange() < getTotalNumberOfPages() - 1) {
 				Map<String, String> attrs = new HashMap<>();
@@ -119,7 +118,7 @@ public class PagingTag extends ComponentTagSupport implements JspIdConsumer {
 		}
 	}
 
-	void renderPageRangeLinks() throws IOException, JspTagException {
+	void renderPageRangeLinks() throws IOException {
 		for (int i = getFirstPageInRange(); i <= getLastPageInRange(); i++) {
 			Map<String, String> attrs = new HashMap<>();
 			if (i == currentPage) {
@@ -138,7 +137,7 @@ public class PagingTag extends ComponentTagSupport implements JspIdConsumer {
 		}
 	}
 
-	Map<String, String> addUrl(Map<String, String> attrs, int firstResult, int pageSize) throws JspTagException {
+	Map<String, String> addUrl(Map<String, String> attrs, int firstResult, int pageSize) {
 		String uri;
 		String query;
 		switch (getRequest().getDispatcherType()) {

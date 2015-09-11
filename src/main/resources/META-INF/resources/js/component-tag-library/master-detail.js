@@ -35,7 +35,7 @@
 		this.settings.id = this.$element.data('master-detail-id');
 		var index = this.$currentItem.data('master-detail-index');
 		var $detailContainer = $('[data-master-detail-id="' + this.settings.id + '"][data-master-detail="detail"]');
-		$detailContainer.children(':not(.hide)').addClass('hide');
+		$detailContainer.children('[data-master-detail-index]:not(.hide)').addClass('hide');
 		this.$currentDetail = $detailContainer.children('[data-master-detail-index="' + index + '"]').removeClass('hide');
 
 		sessionStorage.setItem(this.settings.id, index);

@@ -60,7 +60,7 @@ public class MasterDetailTagTest {
 			}
 		});
 		tag.doTag();
-		Assert.assertEquals(Integer.valueOf(items.size() * 2), context.getAttribute("items"));
+		Assert.assertEquals(Integer.valueOf(items.size() * 4), context.getAttribute("items"));
 	}
 
 	private boolean listHasAttribute(String attribute, String value) {

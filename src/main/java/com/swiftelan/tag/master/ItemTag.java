@@ -24,7 +24,7 @@ public class ItemTag extends ComponentTagSupport {
 	@Override
 	public void doTag() throws JspException, IOException {
 		MasterDetailTag parent = findAncestorTag(this, MasterDetailTag.class);
-		if (parent.isRenderMaster()) {
+		if (parent.isRenderMaster() && !parent.isRenderHeader()) {
 			if (groupExpression != null) {
 				String groupValue = (String) groupExpression.getValue(getJspContext().getELContext());
 				String previousGroupValue = (String) getJspContext().getAttribute(PREVIOUS_GROUP_VALUE);
@@ -56,10 +56,10 @@ public class ItemTag extends ComponentTagSupport {
 	/**
 	 * Group multiple items under a heading.
 	 * <p>
-	 * Expression is evaluated every invocation. The value is compared to the previous value and if there is a change,
-	 * the value is rendered as a list item with the {@code class="nav-header"}.
+	 * Expression is evaluated every invocation. The value is compared to the previous value and if there is a change, the
+	 * value is rendered as a list item with the {@code class="nav-header"}.
 	 * </p>
-	 * 
+	 *
 	 * @param groupExpression Expression to use for grouping items in this list
 	 */
 	public void setGroupExpression(ValueExpression groupExpression) {

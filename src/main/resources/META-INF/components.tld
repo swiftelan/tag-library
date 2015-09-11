@@ -342,6 +342,12 @@
 			<type>java.lang.String</type>
 		</attribute>
 	</tag>
+	
+	<tag>
+		<name>itemHeader</name>
+		<tag-class>com.swiftelan.tag.master.ItemHeaderTag</tag-class>
+		<body-content>scriptless</body-content>
+	</tag>
 
 	<tag>
 		<description>Define the content of an item in the detail pane.</description>
@@ -355,6 +361,12 @@
 			<rtexprvalue>true</rtexprvalue>
 			<type>java.lang.String</type>
 		</attribute>
+	</tag>
+	
+	<tag>
+		<name>detailHeader</name>
+		<tag-class>com.swiftelan.tag.master.DetailHeaderTag</tag-class>
+		<body-content>scriptless</body-content>
 	</tag>
 
 	<tag>

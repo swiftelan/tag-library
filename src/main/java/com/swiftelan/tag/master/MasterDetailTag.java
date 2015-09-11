@@ -12,13 +12,12 @@ import com.swiftelan.tag.LoopTagSupport;
 /**
  * Tag handler that controls the rendering of a master-detail component.
  * <p>
- * The master-detail component consists of a list of items rendered by the {@link ItemTag} and corresponding detail
- * sections rendered by the {@link DetailTag}. The list of items is typically a single attribute of the object such as a
- * name. The detail section contains more information about the object. The list of items and detail sections are
- * wrapped in container elements that can be styled by using {@link #setListContainerClass(String)} and
- * {@link #setDetailContainerClass(String)}.
+ * The master-detail component consists of a list of items rendered by the {@link ItemTag} and corresponding detail sections
+ * rendered by the {@link DetailTag}. The list of items is typically a single attribute of the object such as a name. The
+ * detail section contains more information about the object. The list of items and detail sections are wrapped in container
+ * elements that can be styled by using {@link #setListContainerClass(String)} and {@link #setDetailContainerClass(String)}.
  * </p>
- * 
+ *
  * @see DetailTag
  * @see ItemTag
  */
@@ -29,6 +28,7 @@ public class MasterDetailTag extends LoopTagSupport implements JspIdConsumer {
 	private String listContainerClass;
 	private String detailContainerClass;
 	private boolean renderMaster;
+	private boolean renderHeader;
 
 	@Override
 	public void doTag() throws JspException, IOException {
@@ -50,14 +50,21 @@ public class MasterDetailTag extends LoopTagSupport implements JspIdConsumer {
 
 	private void doMaster() throws IOException, JspException {
 		renderMaster = true;
+		renderHeader = true;
+
+		if (getJspBody() != null) {
+			getJspBody().invoke(null);
+		}
+		renderHeader = false;
+
 		Map<String, String> attributes = new HashMap<>();
 		attributes.put("data-master-detail-id", jspId);
 		attributes.put("data-master-detail", "master");
 		attributes.put("class", listClass);
 		start("ul", attributes);
-		if (getJspBody() != null) {
-			while (getIterator().hasNext()) {
-				getIterator().next();
+		while (getIterator().hasNext()) {
+			getIterator().next();
+			if (getJspBody() != null) {
 				getJspBody().invoke(null);
 			}
 		}
@@ -66,9 +73,14 @@ public class MasterDetailTag extends LoopTagSupport implements JspIdConsumer {
 
 	private void doDetail() throws JspException, IOException {
 		renderMaster = false;
+		renderHeader = true;
 		if (getJspBody() != null) {
-			while (getIterator().hasNext()) {
-				getIterator().next();
+			getJspBody().invoke(null);
+		}
+		renderHeader = false;
+		while (getIterator().hasNext()) {
+			getIterator().next();
+			if (getJspBody() != null) {
 				getJspBody().invoke(null);
 			}
 		}
@@ -82,14 +94,25 @@ public class MasterDetailTag extends LoopTagSupport implements JspIdConsumer {
 		this.renderMaster = renderMaster;
 	}
 
+	boolean isRenderHeader() {
+		return renderHeader;
+	}
+
+	void setRenderHeader(boolean renderHeader) {
+		this.renderHeader = renderHeader;
+	}
+
 	@Override
 	public void setJspId(String id) {
 		jspId = id;
 	}
 
 	/**
-	 * Set the HTML {@code class} attribute of the {@code <ul>} element that is the parent of items in the master list.
-	 * 
+	 * Set the HTML {@code class} attribute of the {@code
+	 *
+	<ul>
+	 * } element that is the parent of items in the master list.
+	 *
 	 * @param listClass HTML {@code class} attribute value
 	 */
 	public void setListClass(String listClass) {
@@ -98,7 +121,7 @@ public class MasterDetailTag extends LoopTagSupport implements JspIdConsumer {
 
 	/**
 	 * Set the HTML {@code class} attribute of the {@code <div>} element that is the parent of the master list.
-	 * 
+	 *
 	 * @param listContainerClass HTML {@code class} attribute value
 	 */
 	public void setListContainerClass(String listContainerClass) {
@@ -107,7 +130,7 @@ public class MasterDetailTag extends LoopTagSupport implements JspIdConsumer {
 
 	/**
 	 * Set the HTML {@code class} attribute of the {@code <div>} element that is the parent of the detail sections.
-	 * 
+	 *
 	 * @param detailContainerClass HTML {@code class} attribute value
 	 */
 	public void setDetailContainerClass(String detailContainerClass) {
