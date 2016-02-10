@@ -89,18 +89,21 @@
 			<description>If the type attribute is 'file', this attribute defines the types of files the element will accept.</description>
 			<name>accept</name>
 			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
 		</attribute>
 		
 		<attribute>
 			<description>Controls if the element's value can be completed by the browser.</description>
 			<name>autocomplete</name>
 			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
 		</attribute>
 		
 		<attribute>
 			<description>Automatically focus the element when the page is loaded.</description>
 			<name>autofocus</name>
 			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
 		</attribute>
 		
 		<attribute>
@@ -128,30 +131,35 @@
 			<description>Associate the element with a form element. The value should be the ID of a form element.</description>
 			<name>form</name>
 			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
 		</attribute>
 
 		<attribute>
 			<description>URL to use for form submission.</description>
 			<name>formaction</name>
 			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
 		</attribute>
 		
 		<attribute>
 			<description>HTTP method to use for form submission.</description>
 			<name>formmethod</name>
 			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
 		</attribute>
 		
 		<attribute>
 			<description>Bypass validation for form submission.</description>
 			<name>formnovalidate</name>
 			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
 		</attribute>
 		
 		<attribute>
 			<description>Browsing context for form submission.</description>
 			<name>formtarget</name>
 			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
 		</attribute>
 		
 		<attribute>
@@ -165,42 +173,49 @@
 			<description>Specifies the kind of input mechanism would be most helpful for users entering content into the control.</description>
 			<name>inputmode</name>
 			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
 		</attribute>
 		
 		<attribute>
 			<description>Autocompelete options for the control.</description>
 			<name>list</name>
 			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
 		</attribute>
 		
 		<attribute>
 			<description>Maximum allowed value for the control.</description>
 			<name>max</name>
 			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
 		</attribute>
 		
 		<attribute>
 			<description>Maximum allowed length for the value of the control.</description>
 			<name>maxlength</name>
 			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
 		</attribute>
 		
 		<attribute>
 			<description>Minimum allowed value for the control.</description>
 			<name>min</name>
 			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
 		</attribute>
 		
 		<attribute>
 			<description>Minimum allowed length for the value of the control.</description>
 			<name>minlength</name>
 			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
 		</attribute>
 		
 		<attribute>
 			<description>Whether to allow multiple values.</description>
 			<name>multiple</name>
 			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
 		</attribute>
 		
 		<attribute>
@@ -215,18 +230,21 @@
 			<description>Pattern used to match the value of the control.</description>
 			<name>pattern</name>
 			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
 		</attribute>
 		
 		<attribute>
 			<description>Label displayed within the control when no value is present.</description>
 			<name>placeholder</name>
 			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
 		</attribute>
 		
 		<attribute>
 			<description>Whether to allow the value to be edited by the user.</description>
 			<name>readonly</name>
 			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
 		</attribute>
 		
 		<attribute>
@@ -240,18 +258,21 @@
 			<description>Size of the control.</description>
 			<name>size</name>
 			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
 		</attribute>
 		
 		<attribute>
 			<description>URI for the location of the resource.</description>
 			<name>src</name>
 			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
 		</attribute>
 		
 		<attribute>
 			<description>Amount to increment or decrement the control's value.</description>
 			<name>step</name>
 			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
 		</attribute>
 		
 		<attribute>

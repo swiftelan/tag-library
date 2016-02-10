@@ -332,127 +332,99 @@ public class InputTag extends ComponentTagSupport {
 		getAttributes().put("value", value);
 	}
 
-	String getAccept() {
+	public String getAccept() {
 		return getAttributes().get("accept");
 	}
 
-	String getAutocomplete() {
+	public String getAutocomplete() {
 		return getAttributes().get("autocomplete");
 	}
 
-	String getAutofocus() {
+	public String getAutofocus() {
 		return getAttributes().get("autofocus");
 	}
 
-	public boolean isAutofocus() {
-		return getAutofocus() != null;
-	}
-
-	String getChecked() {
+	public String getChecked() {
 		return getAttributes().get("checked");
 	}
 
-	public boolean isChecked() {
-		return getChecked() != null;
-	}
-
-	String getDisabled() {
+	public String getDisabled() {
 		return getAttributes().get("disabled");
 	}
 
-	public boolean isDisabled() {
-		return getDisabled() != null;
-	}
-
-	String getForm() {
+	public String getForm() {
 		return getAttributes().get("form");
 	}
 
-	String getFormaction() {
+	public String getFormaction() {
 		return getAttributes().get("formaction");
 	}
 
-	String getFormmethod() {
+	public String getFormmethod() {
 		return getAttributes().get("formmethod");
 	}
 
-	String getFormnovalidate() {
+	public String getFormnovalidate() {
 		return getAttributes().get("formnovalidate");
 	}
 
-	public boolean isFormnovalidate() {
-		return getFormnovalidate() != null;
-	}
-
-	String getFormtarget() {
+	public String getFormtarget() {
 		return getAttributes().get("formtarget");
 	}
 
-	String getInputmode() {
+	public String getInputmode() {
 		return getAttributes().get("inputmode");
 	}
 
-	String getList() {
+	public String getList() {
 		return getAttributes().get("list");
 	}
 
-	String getMax() {
+	public String getMax() {
 		return getAttributes().get("max");
 	}
 
-	String getMaxlength() {
+	public String getMaxlength() {
 		return getAttributes().get("maxlength");
 	}
 
-	String getMin() {
+	public String getMin() {
 		return getAttributes().get("min");
 	}
 
-	String getMultiple() {
+	public String getMultiple() {
 		return getAttributes().get("multiple");
-	}
-
-	public boolean isMultiple() {
-		return getMultiple() != null;
 	}
 
 	public String getName() {
 		return getAttributes().get("name");
 	}
 
-	String getPlaceholder() {
+	public String getPlaceholder() {
 		return getAttributes().get("placeholder");
 	}
 
-	String getPattern() {
+	public String getPattern() {
 		return getAttributes().get("pattern");
 	}
 
-	String getReadonly() {
+	public String getReadonly() {
 		return getAttributes().get("readonly");
 	}
 
-	public boolean isReadonly() {
-		return getReadonly() != null;
-	}
-
-	String getRequired() {
+	public String getRequired() {
 		return getAttributes().get("required");
 	}
 
-	public boolean isRequired() {
-		return getRequired() != null;
-	}
-
-	String getSize() {
+	public String getSize() {
 		return getAttributes().get("size");
 	}
 
-	String getSrc() {
+	public String getSrc() {
 		return getAttributes().get("src");
 	}
 
-	String getStep() {
+	public String getStep() {
 		return getAttributes().get("step");
 	}
 

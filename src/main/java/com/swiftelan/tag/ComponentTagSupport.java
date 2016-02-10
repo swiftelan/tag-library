@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.jsp.JspContext;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.DynamicAttributes;
@@ -89,6 +90,13 @@ public class ComponentTagSupport extends SimpleTagSupport implements DynamicAttr
 		writer.append(">");
 	}
 
+	/**
+	 * Start a new element. Data is written to the client response using {@link JspContext#getOut()}.
+	 * 
+	 * @param element Name of the element.
+	 * @param attributes Attribute data to include in the element.
+	 * @throws IOException If an error occurs while writing the data to the response.
+	 */
 	public void start(String element, Map<String, String> attributes) throws IOException {
 		start(element, attributes, getJspContext().getOut());
 	}
